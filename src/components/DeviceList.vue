@@ -1,7 +1,7 @@
 <!-- DeviceList.vue -->
 <template>
   <div >
-    <div v-if="loading" class="bg-orange-100" >Cargando...</div>
+    <div v-if="deviceStore.loading" class="bg-orange-100" >Cargando...</div>
     <ul v-else>
         <li class="flex items-center border border-gray-200 rounded p-2 justify-start">
           <span class="basis-20 ml-6">Conexion</span>
@@ -10,7 +10,7 @@
           <span class="basis-20 ml-20">Last seen</span>
         </li>
         <DeviceListItem class="bg-slate-100"
-          v-for="(device, index) in devices" :key="index"
+          v-for="(device, index) in deviceStore.devices" :key="index"
           :comState="device.comState"
           :deviceName="device.name"
           :lqi="device.lqi"
@@ -22,30 +22,20 @@
   
 <script lang="ts">
     import DeviceListItem from './DeviceListItem.vue'
-    import DeviceService from '../services/DeviceService'
-    import { defineComponent } from 'vue';
+    import { useDeviceStore } from '../stores/deviceStore'
+    import { defineComponent, onMounted } from 'vue';
 
     export default defineComponent({
-    components: {
-        DeviceListItem,
-    },
-    data() {
-        return {
-        devices: [],
-        loading: true,
-        error: null,
-        }
-    },
-    async mounted() {
-        this.devices = await DeviceService.getAllDevices();
-        const now = new Date(); 
-        this.devices.forEach(element=>{
-          let lastCom = new Date(element.lastCom)
-          let differenceInMilliseconds = now.getTime() - lastCom.getTime();
-          let differenceInhours = differenceInMilliseconds / (1000 * 60 * 60);
-          element.lastCom = Math.round(differenceInhours);
+      components: {
+          DeviceListItem,
+      },
+      setup(){
+        const deviceStore = useDeviceStore();
+        
+        onMounted( async ()=>{
+          await deviceStore.fetchDevices();
         })
-        this.loading = false;
-    },
+        return {deviceStore}
+      },
     })
 </script>  

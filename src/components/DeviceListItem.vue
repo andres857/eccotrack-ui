@@ -25,7 +25,6 @@
     },
     computed: {
       comStateClass() {
-        console.log(typeof(this.comState)); // logging
         switch (this.comState) {
           case 1:
             return 'bg-green-500';
