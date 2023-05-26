@@ -14,15 +14,15 @@
           :comState="device.comState"
           :deviceName="device.name"
           :lqi="device.lqi"
-          :lastCom="device.lastCom"
+          :lastCom="device.differenceTime"
         />
     </ul>
   </div>
 </template>
   
 <script lang="ts">
-    import DeviceListItem from './DeviceListItem.vue'
-    import { useDeviceStore } from '../stores/deviceStore'
+    import DeviceListItem from './DeviceListItem.vue';
+    import { useDeviceStore } from '../../stores/deviceStore';
     import { defineComponent, onMounted } from 'vue';
 
     export default defineComponent({
@@ -35,7 +35,9 @@
         onMounted( async ()=>{
           await deviceStore.fetchDevices();
         })
-        return {deviceStore}
+        return {
+          deviceStore
+        }
       },
     })
 </script>  

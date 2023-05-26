@@ -1,7 +1,7 @@
 <template>
     <div class="grid grid-cols-2 bg-slate-100">
       <div>
-        <span>list devices</span>
+        <LocationList></LocationList>
       </div>
       <div class="flex justify-center items-center p-12">
         <Map></Map>
@@ -9,6 +9,14 @@
     </div>
 </template>
   
-<script setup lang="ts">
+<script lang="ts">
   import Map from '../components/Map.vue';
+  import LocationList from '../components/locations/LocationList.vue';
+  import { defineComponent } from 'vue';
+  
+  export default defineComponent({
+    components:{
+      LocationList
+    }
+  })
 </script>

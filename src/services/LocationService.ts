@@ -15,7 +15,6 @@ class LocationService {
                 }
             })
             return locations;
-            
         } catch (error) {
             throw error;
         }

@@ -5,27 +5,27 @@
     </span>
     <span>{{ deviceName }}</span>
     <span> {{ lqi }} </span>
-    <span>{{ lastCom }} Hours</span>
+    <span>{{ lastCom }}</span>
   </li>
 </template>
   
 <script lang="ts">
-  import { SignalIcon } from '@heroicons/vue/24/outline'
-  import { defineComponent } from 'vue';
+  import { SignalIcon } from '@heroicons/vue/24/outline';
+  import { defineComponent, computed } from 'vue';
 
   export default defineComponent({
     components: {
       SignalIcon,
     },
     props: {
-      comState: String,
+      comState: Number,
       deviceName: String,
       lqi: String,
-      lastCom: String
+      lastCom: Number
     },
-    computed: {
-      comStateClass() {
-        switch (this.comState) {
+    setup(props){
+      const comStateClass = computed(()=>{
+          switch (props.comState) {
           case 1:
             return 'bg-green-500';
           case 3:
@@ -33,7 +33,11 @@
           default:
             return 'bg-gray-500';
         }
+      })
+      return {
+          comStateClass
       }
-    }
+    },
+
   })
 </script>

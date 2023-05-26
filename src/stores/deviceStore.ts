@@ -10,12 +10,17 @@ export const useDeviceStore = defineStore({
     }),
     actions: {
         updateDates() {
-            const now = new Date();
-            this.devices.forEach( element => {
-                let lastCom = new Date( element.lastCom)
-                let differenceInMilliseconds = now.getTime() - lastCom.getTime();
-                let differenceInhours = differenceInMilliseconds / ( 1000 * 60 * 60);
-                element.lastCom = Math.round(differenceInhours);
+            const now = new Date();   
+            this.devices.forEach(element => {
+                let lastCom = new Date(element.lastCom);
+                let differenceInMilliseconds = now.getTime() - lastCom.getTime();                
+                let differenceInMinutes = differenceInMilliseconds / (1000 * 60);
+                if (differenceInMinutes < 60) {
+                    element.differenceTime = `${Math.round(differenceInMinutes)} minutes`;
+                } else {                    
+                    let differenceInhours = differenceInMilliseconds / (1000 * 60 * 60);
+                    element.differenceTime = `${Math.round(differenceInhours)} hours`;
+                }
             });
         },
         async fetchDevices() {

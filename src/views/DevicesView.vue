@@ -20,8 +20,8 @@
   
 <script lang="ts">
     import { defineComponent } from 'vue';
-    import DeviceList from '../components/DeviceList.vue'
-    import { useDeviceStore } from '../stores/deviceStore'
+    import { useDeviceStore } from '../stores/deviceStore';
+    import DeviceList from '../components/devices/DeviceList.vue';
 
     export default defineComponent({
         components:{
@@ -32,6 +32,4 @@
             return { deviceStore }
         }
     })
-
-    
 </script>
