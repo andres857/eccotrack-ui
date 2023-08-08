@@ -10,16 +10,37 @@
         <!-- Repite para los otros sensores -->
       </ul>
     </div>
+    <div>
+      'holaaaa'
+    </div>
   </template>
   
   <script lang="ts">
-  import { SignalIcon } from '@heroicons/vue/24/outline'
+  import { SignalIcon } from '@heroicons/vue/24/outline';
+  import  deviceService  from '../services/DeviceService';
+  import { defineComponent, onMounted, ref } from 'vue';
   
-  export default {
+  export default defineComponent({
     components: {
-      SignalIcon,
+        SignalIcon,
     },
-    // ...resto de tu código Vue/TypeScript
-  }
+    setup(){
+      const locations = ref(null);
+      let loading = ref(false); 
+
+      onMounted( async ()=>{
+        locations.value = await deviceService.getDevices();
+        console.log('------');
+        console.log(locations.value);
+        console.log('------');
+        loading.value = true;
+      })
+
+      return {
+        locations,
+        loading
+      }
+    },
+  })
   </script>
   

@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_URL = 'https://eccotrack.windowschannel.com';
+const API_URL = 'https://api.pinegrove.io';
 
 class ClientService {
     async crearCliente(client: any): Promise<any> {

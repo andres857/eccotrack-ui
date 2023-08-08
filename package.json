@@ -17,6 +17,7 @@
     "@popperjs/core": "^2.11.7",
     "axios": "^1.4.0",
     "pinia": "^2.0.36",
+    "tabulator-tables": "^5.5.0",
     "vue": "^3.3.2",
     "vue-router": "^4.2.0",
     "vue3-google-map": "^0.15.0"
