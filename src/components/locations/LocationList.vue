@@ -26,19 +26,22 @@
         },
         setup(){
           const locations = ref(null);
+          const devices = ref(null);
           let loading = ref(false); 
 
           onMounted( async ()=>{
+            devices.value = await LocationService.getOnBoardingLocation();
             locations.value = await LocationService.getLocationAllDevice();
-            console.log('------');
-            console.log(locations.value);
+            console.log('------devices -------');
+            //console.log(devices.value);
             console.log('------');
             loading.value = true;
           })
 
           return {
             locations,
-            loading
+            loading,
+            devices
           }
         },
       })
