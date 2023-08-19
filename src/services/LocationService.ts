@@ -78,6 +78,8 @@ class LocationService {
             const deviceinfo = await this.getDeviceInfo(device.id);
             const lastSeenDevice = await this.lastSeen(deviceinfo.lastCom);
             const IsRange = await this.deviceIsRange(device.id, device.coordinates);
+            const onboarding = await this.getOnBoardingLocation(device.id);
+            console.log('service Location - onboarding location - id:', device.id, ':', onboarding);
             
             return {
                 id: device.id,
@@ -86,7 +88,8 @@ class LocationService {
                 coordinates: device.coordinates,
                 state: deviceinfo.comState === 1 ? 'Conectado' : 'Desconectado',
                 lastSeen: lastSeenDevice,
-                onboardingLocation: IsRange
+                onboardingLocation: IsRange,
+                onboardingCoordinates: onboarding
             };
         }));
         return devicesUpdated;

@@ -13,9 +13,6 @@ class deviceService {
                 lat: 40.4725097845423,
                 lng: -3.682144767
             },
-            radius:500,
-            fillColor: "#19E05B",
-            strokeColor: "#E69150",
         },
         {
             "id": "C0E915",
@@ -25,9 +22,6 @@ class deviceService {
                 lat: 40.4725097845423,
                 lng: -3.682144767
             },
-            radius:500,
-            fillColor: "#19E05B",
-            strokeColor: "#E69150",
         },
         {
             "id": "C26EE9",
@@ -37,9 +31,6 @@ class deviceService {
                 lat: 36.7111006427816,
                 lng: -4.433438829
             },
-            radius:500,
-            fillColor: "#19E05B",
-            strokeColor: "#E69150",
         },
         {
             "id": "C2661D",
@@ -49,9 +40,6 @@ class deviceService {
                 lat: 36.7111006427816,
                 lng: -4.433438829
             },
-            radius:500,
-            fillColor: "#19E05B",
-            strokeColor: "#E69150",
         },
         {
             "id": "C218D2",
@@ -61,9 +49,6 @@ class deviceService {
                 lat: 36.7111006427816,
                 lng: -4.433438829
             },
-            radius:500,
-            fillColor: "#19E05B",
-            strokeColor: "#E69150",
         },
         {
             "id": "C1BDCB",
@@ -73,9 +58,6 @@ class deviceService {
                 lat: 37.4086196534172,
                 lng: -5.959022271
             },
-            radius:500,
-            fillColor: "#19E05B",
-            strokeColor: "#E69150",
         },
         {
             "id": "C2D074",
@@ -85,9 +67,6 @@ class deviceService {
                 lat: 37.4086196534172,
                 lng: -5.959022271
             },
-            radius:500,
-            fillColor: "#19E05B",
-            strokeColor: "#E69150",
         },
         {
             "id": "C2B109",
@@ -97,9 +76,6 @@ class deviceService {
                 lat: 37.4086196534172,
                 lng: -5.959022271
             },
-            radius:500,
-            fillColor: "#19E05B",
-            strokeColor: "#E69150",
         },
         {
             "id": "C2AEC1",
@@ -109,9 +85,6 @@ class deviceService {
                 lat: 40.3502746162539,
                 lng: -3.831896599
             },
-            radius:500,
-            fillColor: "#19E05B",
-            strokeColor: "#E69150",
         },
         {
             "id": "C1C206",
@@ -121,9 +94,6 @@ class deviceService {
                 lat: 40.3286656743908,
                 lng: -3.771186375
             },
-            radius:500,
-            fillColor: "#19E05B",
-            strokeColor: "#E69150",
         },
         {
             "id": "C26613",
@@ -133,9 +103,6 @@ class deviceService {
                 lat: 40.3761326193531,
                 lng: -3.656194488
             },
-            radius:500,
-            fillColor: "#19E05B",
-            strokeColor: "#E69150",
         },
         {
             "id": "C26857",
@@ -145,9 +112,6 @@ class deviceService {
                 lat: 40.3444389210696,
                 lng: -3.679611939
             },
-            radius:500,
-            fillColor: "#19E05B",
-            strokeColor: "#E69150",
         },
         {
             "id": "C2AB4A",
@@ -157,9 +121,6 @@ class deviceService {
                 lat: 40.3444389210696,
                 lng: -3.679611939
             },
-            radius:500,
-            fillColor: "#19E05B",
-            strokeColor: "#E69150",
         },
         {
             "id": "C24C84",
@@ -169,9 +130,6 @@ class deviceService {
                 lat: 40.3444389210696,
                 lng: -3.679611939
             },
-            radius:500,
-            fillColor: "#19E05B",
-            strokeColor: "#E69150",
         },
         {
             "id": "C261C3",
@@ -181,9 +139,6 @@ class deviceService {
                 lat: 40.3759421774773,
                 lng: -3.68004721
             },
-            radius:500,
-            fillColor: "#19E05B",
-            strokeColor: "#E69150",
         },
         {
             "id": "C25D6B",
@@ -193,9 +148,6 @@ class deviceService {
                 lat: 40.4025125230714,
                 lng: -3.711426433
             },
-            radius:500,
-            fillColor: "#19E05B",
-            strokeColor: "#E69150",
         },
         {
             "id": "C297E8",
@@ -205,9 +157,6 @@ class deviceService {
                 lat: 40.3517073171226,
                 lng: -3.687507391
             },
-            radius:500,
-            fillColor: "#19E05B",
-            strokeColor: "#E69150",
         },
     ]
 

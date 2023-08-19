@@ -16,9 +16,11 @@
       :zoom="15"
     >
       <Marker :options="{ position: { lat:coordinates.lat, lng:coordinates.lng } }" />
-      <Marker :options="markerOptionsOnboarding" />
-      <Marker :options="markerOptionsOnboarding1" />
-      <Marker :options="markerOptionsOnboarding2" />
+      
+      <!-- marker ubications -->
+      <div v-for="(device, index) in devices" :key="index">
+          <Marker :options="{ position: { lat: device.onboardingCoordinates.lat, lng: device.onboardingCoordinates.lng },label: device.id }"/>
+      </div>
 
       <!-- Dibuja los circulos -->
       <Circle v-for="circle in circles" :options="circle" />
@@ -28,10 +30,20 @@
       </div>
     </GoogleMap>
   </div>
+
+  <div>
+    <div v-for="(device, index) in devices" :key="index">
+      {{ device.onboardingCoordinates.lat }} - {{ device.onboardingCoordinates.lng }} - {{ device.id }}
+    </div>
+  </div>
+  <div>
+
+  </div>
+
 </template>
   
 <script lang="ts">
-  import { defineComponent, ref, computed } from "vue";
+  import { defineComponent, ref, computed, onMounted, watch } from "vue";
   import { GoogleMap, Marker, Circle, InfoWindow } from "vue3-google-map";
   import { devicesList } from '../services/DeviceService';
   import  LocationService  from '../services/LocationService'
@@ -39,39 +51,37 @@
   export default defineComponent({
     components: { GoogleMap, Marker, Circle, InfoWindow },
     setup() {
-        
-        console.log(devicesList);
-        const onboardingLocation = { lat: 37.40039409629661, lng: -5.957265401376357 };
-        const markerOptionsOnboarding = { position: onboardingLocation, label: "C1BDCB", title: "LADY LIBERTY" };
+      // obtiene los Objetos reactivos
+        const devices = ref([]);
+        const circles = ref([]);
 
-        const onboardingLocation1 = { lat:  37.40057114262536, lng: -5.957495787128371 };
-        const markerOptionsOnboarding1 = { position: onboardingLocation1, label: "C2D074", title: "LADY LIBERTY" };
+        const listDevices = onMounted( async () => {
+          const infoDevices = await LocationService.infoDevices();
+          devices.value = infoDevices;
+          console.log(devices.value);
 
-        const onboardingLocation2 = { lat:  37.39902070386371, lng: -5.957778334637219 };
-        const markerOptionsOnboarding2 = { position: onboardingLocation2, label: "C2B109", title: "LADY LIBERTY" };
-
+          circles.value = devices.value.map( (item:any) => ({
+              name: item.ubication,
+              center: item.coordinates,
+              radius: 1000,
+              strokeOpacity: 0.8,
+              strokeWeight: 2,
+              fillColor: '#19E05B',
+              strokeColor: '#E69150',
+              fillOpacity: 0.2
+          }));
+        });
 
         const selectedDevice = ref([]);
         const coordinates = ref('')
         const center = ref({ lat:40.4725097845423, lng:-3.682144767 })
-        const circles = ref([]);
-        circles.value = devicesList.map( (item:any) => ({
-          name:item.ubication,
-          center: item.coordinates,
-          radius: 1000,
-          strokeOpacity: 0.8,
-          strokeWeight: 2,
-          fillColor: item.fillColor,
-          strokeColor: item.strokeColor,
-          fillOpacity: 0.2,
-        }));
 
         const handleDeviceSelection = () => {
           // Aquí puedes realizar llamadas a la API u otras acciones
           console.log('Dispositivo seleccionado:', selectedDevice.value);
           const device = devicesList.find( device => selectedDevice.value === device.id);
           coordinates.value = device.coordinates;
-          center.value = coordinates.value
+          center.value = coordinates.value;
         };
 
         const markerOptions = computed(() => ({
@@ -86,15 +96,14 @@
         return { 
           center,
           circles,
+          devices,
           devicesList,
           selectedDevice,
           selectedDeviceName,
           handleDeviceSelection,
           markerOptions,
           coordinates,
-          markerOptionsOnboarding,
-          markerOptionsOnboarding1,
-          markerOptionsOnboarding2
+          listDevices
         };
     },
   });
