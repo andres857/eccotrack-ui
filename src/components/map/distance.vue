@@ -1,6 +1,6 @@
 <template>
     <GoogleMap
-      api-key="AIzaSyBqyxt61uXcro5e3xTAFUfLw4us08AlIvQ"
+      api-key='AIzaSyAOUZ9OeINieyhHHLJL0nRIOfizXyyxr8E'
       style="width: 100%; height: 500px"
       :center="center"
       :zoom="13"
@@ -70,8 +70,8 @@
       }));
   
       onMounted( async ()=>{
-        coordenadas.value = await LocationService.getCoordenadas();
-        console.log(coordenadas.value);
+        // coordenadas.value = await LocationService.getCoordenadas();
+        // console.log(coordenadas.value);
       })
       return { 
         center, 

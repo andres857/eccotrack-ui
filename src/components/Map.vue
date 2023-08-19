@@ -1,6 +1,6 @@
 <template>
   <GoogleMap
-    api-key="AIzaSyBqyxt61uXcro5e3xTAFUfLw4us08AlIvQ"
+    api-key="AIzaSyAOUZ9OeINieyhHHLJL0nRIOfizXyyxr8E"
     style="width: 100%; height: 500px"
     :center="center"
     :zoom="14"
@@ -10,6 +10,7 @@
     </CustomControl>
     <!-- circles map -->
     <Circle v-for="circle in circles" :options="circle" />
+
     <div v-for="circle in circles">
       <InfoWindow :options="{ position: circle.center }"> {{circle.name}} </InfoWindow>
     </div>
@@ -24,11 +25,10 @@
       </div>
     </div>
   </GoogleMap>
-
-  
 </template>
 
 <script>
+import dotenv from 'dotenv';
 import { defineComponent, ref, onMounted } from "vue";
 import { GoogleMap, Circle, Marker, InfoWindow, CustomControl } from "vue3-google-map";
 import LocationService from '../services/LocationService';
@@ -46,6 +46,7 @@ export default defineComponent({
     const center = { lat: 40.5590682, lng: -3.6236133 } //madrid coordenadas
     // const center = { lat: 40.4165000, lng: -3.7025600 }; //madrid coordenadas
     const markerIcon = 'https://maps.google.com/mapfiles/ms/icons/green-dot.png';
+    
     const locations = ref([
       {
         name: 'Chamartin',
@@ -243,8 +244,8 @@ export default defineComponent({
     const sayHi = () => alert("Hi!");
 
     onMounted(async ()=>{
-      coordenadas.value = await LocationService.getCoordenadas();
-      console.log(coordenadas.value);
+      // coordenadas.value = await LocationService.getCoordenadas();
+      // console.log(coordenadas.value);
     })
     return { 
       center, 

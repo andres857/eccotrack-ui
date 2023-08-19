@@ -31,7 +31,7 @@
 
           onMounted( async ()=>{
             devices.value = await LocationService.getOnBoardingLocation();
-            locations.value = await LocationService.getLocationAllDevice();
+            // locations.value = await LocationService.getLocationAllDevice();
             console.log('------devices -------');
             //console.log(devices.value);
             console.log('------');

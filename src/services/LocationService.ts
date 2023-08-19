@@ -1,10 +1,12 @@
-import { ChatBubbleLeftRightIcon } from '@heroicons/vue/24/solid';
 import axios from 'axios';
-import DeviceService from './DeviceService';
+import DistanceService from './DistanceService';
+import { devicesList } from './DeviceService';
+
 // recupera la info de SIGFOX
 const API_URL = 'https://api-nettrotter.windowschannel.com';
 
 class LocationService {
+
     async getDevices(): Promise<any> {
         try {
             const { data } = await axios.get(`${API_URL}/sigfox/devices`);
@@ -71,228 +73,56 @@ class LocationService {
         }
         return differenceTime;
     }
-    async generateTable(){
-        const devices= [
-            {
-                "id": "C0E915",
-                "name": "Grupo Electrogeno 2",
-                'ubication': 'Chamartin',
-                'coordinates':{
-                    lat: 40.4725097845423,
-                    lng: -3.682144767
-                },
-                "status": '',
-                "lastseen": '',
-            },
-            {
-                "id": "C26EF2",
-                "name": "Rotativa 1",
-                'ubication': 'Malaga',
-                'coordinates':{
-                    lat: 36.7111006427816,
-                    lng: -4.433438829
-                },
-                "status": '',
-                "lastseen": '',
-            },
-            {
-                "id": "C26EE9",
-                "name": "Aspiradora 1",
-                'ubication': 'Malaga',
-                'coordinates':{
-                    lat: 36.7111006427816,
-                    lng: -4.433438829
-                },
-                "status": '',
-                "lastseen": '',
-            },
-            {
-                "id": "C2661D",
-                "name": "Sopladora 1",
-                'ubication': 'Malaga',
-                'coordinates':{
-                    lat: 36.7111006427816,
-                    lng: -4.433438829
-                },
-                "status": '',
-                "lastseen": '',
-            },
-            {
-                "id": "C218D2",
-                "name": "Rotativa 2",
-                'ubication': 'Sevilla CTT',
-                'coordinates':{
-                    lat: 37.4086196534172,
-                    lng: -5.959022271
-                },
-                "status": '',
-                "lastseen": '',
-            },
-            {
-                "id": "C2D074",
-                "name": "Sopladora 2",
-                'ubication': 'Sevilla CTT',
-                'coordinates':{
-                    lat: 37.4086196534172,
-                    lng: -5.959022271
-                },
-                "status": '',
-                "lastseen": '',
-            },
-            {
-                "id": "C1BDCB",
-                "name": "Aspiradora 2",
-                'ubication': 'Sevilla CTT',
-                'coordinates':{
-                    lat: 37.4086196534172,
-                    lng: -5.959022271
-                },
-                "status": '',
-                "lastseen": '',
-            },
-            {
-                "id": "C2D03F",
-                "name": "T290 1",
-                'ubication': 'Alcorcón',
-                'coordinates':{
-                    lat: 40.3502746162539,
-                    lng: -3.831896599
-                },
-                "status": '',
-                "lastseen": '',
-            },
-            {
-                "id": "C2AEC1",
-                "name": "T290 2",
-                'ubication': 'Leganes',
-                'coordinates':{
-                    lat: 40.3286656743908,
-                    lng: -3.771186375
-                },
-                "status": '',
-                "lastseen": '',
-            },
-            {
-                "id": "C1C206",
-                "name": "T290 3",
-                'ubication': 'El Pozo',
-                'coordinates':{
-                    lat: 40.3761326193531,
-                    lng: -3.656194488
-                },
-                "status": '',
-                "lastseen": '',
-            },
-            {
-                "id": "C26613",
-                "name": "Nilfisk 1",
-                'ubication': 'Villaverde BMI',
-                'coordinates':{
-                    lat: 40.3444389210696,
-                    lng: -3.679611939
-                },
-                "status": '',
-                "lastseen": '',
-            },
-            {
-                "id": "C26857",
-                "name": "Nilfisk 2",
-                'ubication': 'Villaverde BMI',
-                'coordinates':{
-                    lat: 40.3444389210696,
-                    lng: -3.679611939
-                },
-                "status": '',
-                "lastseen": '',
-            },
-            {
-                "id": "C2AB4A",
-                "name": "Nilfisk 3",
-                'ubication': 'Villaverde BMI',
-                'coordinates':{
-                    lat: 40.3444389210696,
-                    lng: -3.679611939
-                },
-                "status": '',
-                "lastseen": '',
-            },
-            {
-                "id": "C24C84",
-                "name": "Hidropresora 1",
-                'ubication': 'Santa Catalina',
-                'coordinates':{
-                    lat: 40.3759421774773,
-                    lng: -3.68004721
-                },
-                "status": '',
-                "lastseen": '',
-            },
-            {
-                "id": "C26CB8",
-                "name": "T290 4",
-                'ubication': 'Piramides',
-                'coordinates':{
-                    lat: 40.4025125230714,
-                    lng: -3.711426433
-                },
-                "status": '',
-                "lastseen": '',
-            },
-            {
-                "id": "C25D6B",
-                "name": "T290 5",
-                'ubication': 'Villaverde Bajo',
-                'coordinates':{
-                    lat: 40.3517073171226,
-                    lng: -3.687507391
-                },
-                "status": '',
-                "lastseen": '',
-            },
-        ];
-
-        const devicesUpdated = await Promise.all( devices.map (async device => {
+    async infoDevices(){
+        const devicesUpdated = await Promise.all( devicesList.map ( async device => {
             const deviceinfo = await this.getDeviceInfo(device.id);
-            console.log('device INFO',deviceinfo);
             const lastSeenDevice = await this.lastSeen(deviceinfo.lastCom);
-            console.log(lastSeenDevice);
+            const IsRange = await this.deviceIsRange(device.id, device.coordinates);
+            
             return {
                 id: device.id,
                 name: device.name,
                 ubication: device.ubication,
+                coordinates: device.coordinates,
                 state: deviceinfo.comState === 1 ? 'Conectado' : 'Desconectado',
-                lastSeen: lastSeenDevice
+                lastSeen: lastSeenDevice,
+                onboardingLocation: IsRange
             };
         }));
-        console.log('koko', devicesUpdated);
         return devicesUpdated;
     }
-
-    async getLocationAllDevice(): Promise<any> {
-        try {
-            const { data } = await axios.get(`${API_URL}/devices`);            
-            const locations = data.data.map( item =>{
-                return {
-                    id: item.id,
-                    name: item.name,
-                    lastUbication: item.lastComputedLocation
-                }
-            })
-            return locations;
-        } catch (error) {
-            console.log('devices/acciona',error);
-            throw error;
-        }
+    // Determina si un device esta en un rango a la ubicacion definida
+    async deviceIsRange(id: string, locationUbication: any){
+        const onboardingLocation = await this.getOnBoardingLocation(id);
+        // function que compara ambas y retorna true o false
+        const isRange = await DistanceService.calculateDistance(locationUbication, onboardingLocation, 300);
+        return isRange;
     }
-    async getCoordenadas(){
-        const locations = await this.getLocationAllDevice();
-        const coordinates = locations.map( item =>{
-            return {
-                ubication: item.lastUbication
-            }
-        })
-        return coordinates;
-    }
+    // async getLocationAllDevice(): Promise<any> {
+    //     try {
+    //         const { data } = await axios.get(`${API_URL}/devices`);            
+    //         const locations = data.data.map( (item: any) =>{
+    //             return {
+    //                 id: item.id,
+    //                 name: item.name,
+    //                 lastUbication: item.lastComputedLocation
+    //             }
+    //         })
+    //         return locations;
+    //     } catch (error) {
+    //         console.log('devices/acciona',error);
+    //         throw error;
+    //     }
+    // }
+    // async getCoordenadas(){
+    //     const locations = await this.getLocationAllDevice();
+    //     const coordinates = locations.map( (item: any) => {
+    //         return {
+    //             ubication: item.lastUbication
+    //         }
+    //     })
+    //     return coordinates;
+    // }
 }
 
 export default new LocationService();

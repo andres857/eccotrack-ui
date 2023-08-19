@@ -19,7 +19,7 @@
             // devices.value = await LocationService.getOnBoardingLocation('C1BDCB');
             // console.log(devices.value);
     
-            const devices = await LocationService.generateTable();
+            const devices = await LocationService.infoDevices();
             console.log("+++++++++ view location +++++++++++++");
             console.log(devices);
             console.log("+++++++++ view location +++++++++++++");

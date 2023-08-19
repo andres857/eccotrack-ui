@@ -51,10 +51,7 @@
             }
         },
         async mounted() {
-            const devices = await LocationService.generateTable();
-            console.log("+++++++++ view location +++++++++++++");
-            console.log(devices);
-            console.log("+++++++++ view location +++++++++++++");
+            const devices = await LocationService.infoDevices();
             //instantiate Tabulator when element is mounted
             this.tabulator = new Tabulator('#example-table', {
                 data: devices,
@@ -73,7 +70,7 @@
                     { title:"Estacion", field:"ubication"},
                     { title:"Nombre", field:"name", width:200},
                     { title:"Last seen", field:"lastSeen"},
-                    { title:"rango", field: 'range'}
+                    { title:"rango", field: 'onboardingLocation'}
                 ],
             });
         }
