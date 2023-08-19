@@ -19,7 +19,19 @@
       
       <!-- marker ubications -->
       <div v-for="(device, index) in devices" :key="index">
-          <Marker :options="{ position: { lat: device.onboardingCoordinates.lat, lng: device.onboardingCoordinates.lng },label: device.id }"/>
+          <Marker :options="{ position: { lat: device.onboardingCoordinates.lat, lng: device.onboardingCoordinates.lng } }">
+          <InfoWindow>      
+            <div>
+              <span style="font-weight: bold;">ID: </span> {{ device.id }}
+            </div>
+            <div>
+              <span style="font-weight: bold;">Device: </span> {{ device.name }}
+            </div>
+            <div>
+              <span style="font-weight: bold;">Estacion: </span> {{ device.ubication }}
+            </div>
+          </InfoWindow>
+        </Marker>
       </div>
 
       <!-- Dibuja los circulos -->
