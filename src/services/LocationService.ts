@@ -21,6 +21,15 @@ class LocationService {
             throw error;
         }
     }
+    async locations(id: string, limit = 15): Promise<any>{
+        try {
+            const locations = await axios.get(`${API_URL}/history-location/${id}?limit=${limit}`);          
+            console.log('locationService * location history', locations.data);
+            return locations.data;
+        } catch (error) {
+            throw error;
+        }
+    }
     async getDeviceInfo(id: string): Promise<any> {
         try {
             const { data } = await axios.get(`${API_URL}/sigfox/devices/${id}`);
@@ -38,9 +47,9 @@ class LocationService {
             throw error;
         }
     }
-    async getOnBoardingLocation(id:string): Promise<any> {
+    async getOnBoardingLocation(id:string, limit = 25): Promise<any> {
         try {
-            const onboarding = await axios.get(`${API_URL}/history-location/onboarding/${id}`);          
+            const onboarding = await axios.get(`${API_URL}/history-location/onboarding/${id}?limit=${limit}`);          
             return onboarding.data;
         } catch (error) {
             throw error;
@@ -48,7 +57,7 @@ class LocationService {
     }
     async getLastLocation(id:string): Promise<any>{
         try {
-            const {data} = await axios.get(`${API_URL}/history-location/last/${id}`);
+            const { data } = await axios.get(`${API_URL}/history-location/last/${id}`);
             // console.log(`device with id: ${id} last ubication: ${data}`);            
             return data;
         } catch (error) {
@@ -99,6 +108,7 @@ class LocationService {
         }));
         return devicesUpdated;
     }
+
 }
 
 export default new LocationService();

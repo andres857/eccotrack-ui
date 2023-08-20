@@ -16,8 +16,6 @@
                 <span style="font-weight: bold;">Device:</span> {{ deviceSelect.name }}
                 <span style="font-weight: bold;">Visto por ultima vez: </span> {{ deviceSelect.lastSeen }}
                 <span style="font-weight: bold;">Estacion:</span> {{ deviceSelect.ubication }}
-                <br>
-                <span style="font-weight: bold;">coordenadas:</span> {{ deviceSelect.coordinates }}
             </div>
             <div v-else>
                 Seleccione un dispositivo para ver los detalles.
@@ -36,16 +34,29 @@
                     :zoom="13"
                 >
                 <Marker :options="{ position: { lat:deviceSelect.coordinates.lat, lng:deviceSelect.coordinates.lng }, icon: markerIcon }"/>
-                </GoogleMap>
+                <Marker :options="{ position: { lat:OnboardingLocation.lat, lng:OnboardingLocation.lng }, icon: markerIconOnboardingLocation }"/>
+                <Marker :options="{ position: { lat:lastLocation.lat, lng:lastLocation.lng } }"/>
+                
+                <!-- <Marker :options="{ position: { lat:OnboardingLocation.lat, lng:OnboardingLocation.lng }, icon: markerIconOnboardingLocation }"/> -->
+                      <!-- marker ubications -->
+                <div v-for="(location, index) in historyLocations" :key="index">
+                    <Marker :options="{ position: { lat: location.lat, lng: location.lng }, icon: markerIconLocations }">
+                    </Marker>
+                </div>
+            </GoogleMap>
             </div>
             
             <div class="col-4">
                 <div class="input-group input-group-sm mb-3">
                     <span class="input-group-text" id="inputGroup-sizing-sm"> # de ubicaciones </span>
-                    <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+                    <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm"
+                           v-model="numberOfLocations"
+                           @keyup.enter="historyLocation"
+                    >
                 </div>
-                <button type="button" class="btn btn-outline-primary">Calcular Onboarding</button>
-                <button type="button" class="btn btn-outline-success">Guardar Onboarding</button>
+                <button @click="historyLocation" type="button" class="btn btn-outline-success">Obtener localizaciones</button>
+                <button type="button" class="btn btn-outline-primary" @click="OnboardingLocationDevice">Calcular Onboarding</button>
+                <button type="button" class="btn btn-outline-success">Guardar Ubicacion</button>
             </div>
         </div>
     </div>
@@ -65,8 +76,15 @@
             const devices = ref([]);
             const selectedDevice = ref([]);
             const deviceSelect = ref([]);
+            // locations
+            const OnboardingLocation = ref ('');
+            const numberOfLocations = ref(25); // Valor predeterminado
+            const historyLocations = ref([]);
+            const lastLocation = ref('');
 
             const markerIcon = 'https://maps.google.com/mapfiles/ms/icons/green-dot.png';
+            const markerIconOnboardingLocation = 'https://maps.google.com/mapfiles/ms/icons/orange-dot.png';
+            const markerIconLocations = 'https://maps.google.com/mapfiles/ms/icons/blue-dot.png';
 
             const listDevices = onMounted( async () => {
                 const infoDevices = await LocationService.infoDevices();
@@ -75,13 +93,27 @@
             });
 
             const handleDeviceSelection = () => {
-                console.log('Dispositivo seleccionado:', selectedDevice.value);
                 const device = devices.value.find( device => selectedDevice.value === device.id);
+                console.log('Dispositivo seleccionado:', selectedDevice.value);
+            };
+            
+            // Obtener el # de locations para Onboarding
+            const historyLocation =async () => {
+                if (selectedDevice.value) {
+                    historyLocations.value = await LocationService.locations(selectedDevice.value, numberOfLocations.value);
+                    lastLocation.value = await LocationService.getLastLocation(selectedDevice.value);
+                }
+            }
+
+            // Obtener la localizacion onboarding de un device 
+            const OnboardingLocationDevice = async () => {
+                if ( selectedDevice.value ) {
+                    OnboardingLocation.value = await LocationService.getOnBoardingLocation(selectedDevice.value, numberOfLocations.value);
+                }
             };
 
             const selectedDeviceName = computed(() => {
                 const selectedDeviceObj = devices.value.find( device => device.id === selectedDevice.value );
-                console.log('helloword', selectedDeviceObj);
                 deviceSelect.value = selectedDeviceObj;
                 return selectedDeviceObj ? selectedDeviceObj.name : 'Ninguno';
             });
@@ -93,7 +125,15 @@
                 selectedDeviceName,
                 selectedDevice,
                 deviceSelect,
-                markerIcon
+                markerIcon,
+                markerIconOnboardingLocation,
+                markerIconLocations,
+                OnboardingLocationDevice,
+                OnboardingLocation,
+                historyLocation,
+                historyLocations,
+                lastLocation,
+                numberOfLocations,
             }
         },
     });

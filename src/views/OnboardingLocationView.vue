@@ -49,7 +49,7 @@
   import { defineComponent, ref, computed, onMounted, watch } from "vue";
   import { GoogleMap, Marker, Circle, InfoWindow } from "vue3-google-map";
   import { devicesList } from '../services/DeviceService';
-  import  LocationService  from '../services/LocationService'
+  import  LocationService  from '../services/LocationService';
   
   export default defineComponent({
     components: { GoogleMap, Marker, Circle, InfoWindow },
