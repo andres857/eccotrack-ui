@@ -8,11 +8,10 @@
       <!-- <RouterLink to="/" class="text-white font-medium hover:text-gray-300">Home</RouterLink> -->
       <RouterLink to="/devices" class="text-white font-medium hover:text-gray-300">Devices</RouterLink>
       <RouterLink to="/onboarding" class="text-white font-medium hover:text-gray-300">Onboarding</RouterLink>
+      <RouterLink to="/onboarding-device" class="text-white font-medium hover:text-gray-300">Onboarding Device</RouterLink>
+      
       <!-- <RouterLink to="/locations" class="text-white font-medium hover:text-gray-300">Locations</RouterLink> -->
     </nav>
   </header>
   <RouterView />
 </template>
-
-
-

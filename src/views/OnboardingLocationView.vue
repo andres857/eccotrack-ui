@@ -43,15 +43,6 @@
     </GoogleMap>
   </div>
 
-  <div>
-    <div v-for="(device, index) in devices" :key="index">
-      {{ device.onboardingCoordinates.lat }} - {{ device.onboardingCoordinates.lng }} - {{ device.id }}
-    </div>
-  </div>
-  <div>
-
-  </div>
-
 </template>
   
 <script lang="ts">

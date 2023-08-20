@@ -73,14 +73,19 @@ class LocationService {
         }
         return differenceTime;
     }
+    // Determina si un device esta en un rango a la ubicacion definida
+    async deviceIsRange(id: string, locationUbication: any){
+        const onboardingLocation = await this.getOnBoardingLocation(id);
+        // function que compara ambas y retorna true o false
+        const isRange = await DistanceService.calculateDistance(locationUbication, onboardingLocation, 300);
+        return isRange;
+    }
     async infoDevices(){
         const devicesUpdated = await Promise.all( devicesList.map ( async device => {
             const deviceinfo = await this.getDeviceInfo(device.id);
             const lastSeenDevice = await this.lastSeen(deviceinfo.lastCom);
             const IsRange = await this.deviceIsRange(device.id, device.coordinates);
-            const onboarding = await this.getOnBoardingLocation(device.id);
-            console.log('service Location - onboarding location - id:', device.id, ':', onboarding);
-            
+            const onboarding = await this.getOnBoardingLocation(device.id);            
             return {
                 id: device.id,
                 name: device.name,
@@ -94,38 +99,6 @@ class LocationService {
         }));
         return devicesUpdated;
     }
-    // Determina si un device esta en un rango a la ubicacion definida
-    async deviceIsRange(id: string, locationUbication: any){
-        const onboardingLocation = await this.getOnBoardingLocation(id);
-        // function que compara ambas y retorna true o false
-        const isRange = await DistanceService.calculateDistance(locationUbication, onboardingLocation, 300);
-        return isRange;
-    }
-    // async getLocationAllDevice(): Promise<any> {
-    //     try {
-    //         const { data } = await axios.get(`${API_URL}/devices`);            
-    //         const locations = data.data.map( (item: any) =>{
-    //             return {
-    //                 id: item.id,
-    //                 name: item.name,
-    //                 lastUbication: item.lastComputedLocation
-    //             }
-    //         })
-    //         return locations;
-    //     } catch (error) {
-    //         console.log('devices/acciona',error);
-    //         throw error;
-    //     }
-    // }
-    // async getCoordenadas(){
-    //     const locations = await this.getLocationAllDevice();
-    //     const coordinates = locations.map( (item: any) => {
-    //         return {
-    //             ubication: item.lastUbication
-    //         }
-    //     })
-    //     return coordinates;
-    // }
 }
 
 export default new LocationService();

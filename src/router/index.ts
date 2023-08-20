@@ -19,6 +19,14 @@ const router = createRouter({
       component: () => import('../views/OnboardingLocationView.vue')
     },
     {
+      path: '/onboarding-device',
+      name: 'onboarding-device',
+      // route level code-splitting
+      // this generates a separate chunk (About.[hash].js) for this route
+      // which is lazy-loaded when the route is visited.
+      component: () => import('../views/OnboardingLocationDevice.vue')
+    },
+    {
       path: '/locations',
       name: 'locations',
       // route level code-splitting
