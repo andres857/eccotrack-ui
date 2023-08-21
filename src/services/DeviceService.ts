@@ -24,6 +24,51 @@ class deviceService {
             },
         },
         {
+            "id": "C2AA7C",
+            "name": "Grupo Electrogeno 3",
+            'ubication': 'Alcala de Henares',
+            coordinates:{
+                lat: 40.4894717968370,
+                lng: -3.365457714
+            },
+        },
+        // {
+        //     "id": "C2AA7C",
+        //     "name": "Grupo Electrogeno 4",
+        //     'ubication': 'El Escorial',
+        //     coordinates:{
+        //         lat: 40.5852864961765,
+        //         lng: -4.132255414
+        //     },
+        // },
+        {
+            "id": "C2CF85",
+            "name": "Grupo Electrogeno 5",
+            'ubication': 'Guadalajara',
+            coordinates:{
+                lat: 40.6439772144758,
+                lng: -3.182267588
+            },
+        },
+        {
+            "id": "C26EEC",
+            "name": "Grupo Electrogeno 6",
+            'ubication': 'Principe Pio',
+            coordinates:{
+                lat: 40.4205141003862,
+                lng: -3.719563008
+            },
+        },
+        {
+            "id": "C26EF2",
+            "name": "Grupo Electrogeno 7",
+            'ubication': 'Villalba',
+            coordinates:{
+                lat: 40.6264955543625,
+                lng: -4.008038572
+            },
+        },
+        {
             "id": "C26EE9",
             "name": "Rotativa 1",
             'ubication': 'Malaga',
@@ -78,12 +123,21 @@ class deviceService {
             },
         },
         {
-            "id": "C2AEC1",
-            "name": "T290 1",
-            'ubication': 'Alcorcón',
+            "id": "C26CBA",
+            "name": "Sopladora 2",
+            'ubication': 'Sevilla CTT',
             coordinates:{
-                lat: 40.3502746162539,
-                lng: -3.831896599
+                lat: 37.4086196534172,
+                lng: -5.959022271
+            },
+        },
+        {
+            "id": "C2AEC1",
+            "name": "Trituradora 1",
+            'ubication': 'Toledo Sagra',
+            coordinates:{
+                lat: 39.9593106554009,
+                lng: -3.84657849
             },
         },
         {
@@ -138,6 +192,15 @@ class deviceService {
             coordinates:{
                 lat: 40.3759421774773,
                 lng: -3.68004721
+            },
+        },
+        {
+            "id": "C26CB8",
+            "name": "Hidropresora 2",
+            'ubication': 'Atocha',
+            coordinates:{
+                lat: 40.4056219333573,
+                lng: -3.689039174
             },
         },
         {

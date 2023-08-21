@@ -23,7 +23,6 @@
         </div>
     </div>
     <!-- map zone -->
-
     <div v-if="deviceSelect && deviceSelect.coordinates" class="container mt-5">
         <div class="row" >
             <div class="col-8">
@@ -33,19 +32,19 @@
                     :center="deviceSelect.coordinates" 
                     :zoom="13"
                 >
+                <Circle :options="circleLocation" />
+
                 <Marker :options="{ position: { lat:deviceSelect.coordinates.lat, lng:deviceSelect.coordinates.lng }, icon: markerIcon }"/>
                 <Marker :options="{ position: { lat:OnboardingLocation.lat, lng:OnboardingLocation.lng }, icon: markerIconOnboardingLocation }"/>
                 <Marker :options="{ position: { lat:lastLocation.lat, lng:lastLocation.lng } }"/>
                 
-                <!-- <Marker :options="{ position: { lat:OnboardingLocation.lat, lng:OnboardingLocation.lng }, icon: markerIconOnboardingLocation }"/> -->
-                      <!-- marker ubications -->
+                <!-- marker history ubications device -->
                 <div v-for="(location, index) in historyLocations" :key="index">
                     <Marker :options="{ position: { lat: location.lat, lng: location.lng }, icon: markerIconLocations }">
                     </Marker>
                 </div>
             </GoogleMap>
             </div>
-            
             <div class="col-4">
                 <div class="input-group input-group-sm mb-3">
                     <span class="input-group-text" id="inputGroup-sizing-sm"> # de ubicaciones </span>
@@ -86,6 +85,16 @@
             const markerIconOnboardingLocation = 'https://maps.google.com/mapfiles/ms/icons/orange-dot.png';
             const markerIconLocations = 'https://maps.google.com/mapfiles/ms/icons/blue-dot.png';
 
+            const circleLocation = ref({
+                center: { lat: 0, lng: 0 },
+                radius: 1000,
+                strokeOpacity: 0.8,
+                strokeWeight: 2,
+                fillColor: '#19E05B',
+                strokeColor: '#E69150',
+                fillOpacity: 0.2
+            });
+
             const listDevices = onMounted( async () => {
                 const infoDevices = await LocationService.infoDevices();
                 devices.value = infoDevices;
@@ -114,8 +123,15 @@
 
             const selectedDeviceName = computed(() => {
                 const selectedDeviceObj = devices.value.find( device => device.id === selectedDevice.value );
-                deviceSelect.value = selectedDeviceObj;
-                return selectedDeviceObj ? selectedDeviceObj.name : 'Ninguno';
+                if (selectedDeviceObj) {
+                    console.log('device select: ',selectedDeviceObj.id , selectedDeviceObj.coordinates);
+                    deviceSelect.value = selectedDeviceObj;
+                    circleLocation.value = {
+                        ...circleLocation.value,
+                        center: selectedDeviceObj.coordinates
+                    }
+                    return selectedDeviceObj ? selectedDeviceObj.name : 'Ninguno';
+                } 
             });
 
             return{
@@ -128,6 +144,7 @@
                 markerIcon,
                 markerIconOnboardingLocation,
                 markerIconLocations,
+                circleLocation,
                 OnboardingLocationDevice,
                 OnboardingLocation,
                 historyLocation,

@@ -21,7 +21,7 @@ class LocationService {
             throw error;
         }
     }
-    async locations(id: string, limit = 15): Promise<any>{
+    async locations(id: string, limit = 25): Promise<any>{
         try {
             const locations = await axios.get(`${API_URL}/history-location/${id}?limit=${limit}`);          
             console.log('locationService * location history', locations.data);
@@ -32,7 +32,7 @@ class LocationService {
     }
     async getDeviceInfo(id: string): Promise<any> {
         try {
-            const { data } = await axios.get(`${API_URL}/sigfox/devices/${id}`);
+            const { data } = await axios.get(`${API_URL}/sigfox/devices/${id}`);            
             return {
                 id:data.id,
                 sequenceNumber:data.sequenceNumber,
@@ -41,7 +41,8 @@ class LocationService {
                 comState:data.comState,//3 -> RED: Keepalive is enabled at device-type-level. Communication is allowed but keepalive is not met.1
                 lastComputedLocation:data.lastComputedLocation,
                 deviceType:data.deviceType,
-                group:data.group
+                group:data.group,
+                qualitySignal: data.lqi
             }           
         } catch (error) {
             throw error;
@@ -100,15 +101,15 @@ class LocationService {
                 name: device.name,
                 ubication: device.ubication,
                 coordinates: device.coordinates,
+                qualitySignal: deviceinfo.qualitySignal,
                 state: deviceinfo.comState === 1 ? 'Conectado' : 'Desconectado',
                 lastSeen: lastSeenDevice,
                 onboardingLocation: IsRange,
-                onboardingCoordinates: onboarding
+                onboardingCoordinates: onboarding,
             };
         }));
         return devicesUpdated;
     }
-
 }
 
 export default new LocationService();
