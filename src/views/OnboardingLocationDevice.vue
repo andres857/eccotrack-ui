@@ -1,5 +1,5 @@
 <template>
-    <div class="container">
+    <!-- <div class="container">
         <div class="row">
             <div class=" col-6 mt-3">
                 <label for="deviceDropdown">Selecciona un dispositivo:</label>
@@ -21,7 +21,38 @@
                 Seleccione un dispositivo para ver los detalles.
             </div>
         </div>
+    </div> -->
+    <!-- new filter view -->
+    <div>
+        <label for="ubicacionDropdown">Estacion: </label>
+        <select id="ubicacionDropdown" v-model="selectedUbication" @change="updateFilteredDevices(selectedUbication)">
+        <option v-for="ubication in uniqueUbication" :key="ubication" :value="ubication">
+            {{ ubication }}
+        </option>
+        </select>
+        <p>Ubicación seleccionada: {{ selectedUbication }}</p>
     </div>
+
+    <!-- dropdown devices  -->
+    <div>
+        <label for="deviceDropdown">Dispositivos en la ubicación seleccionada:</label>
+        <select id="deviceDropdown" v-model="selectedFilteredDevice">
+            <option v-for="device in filteredDevices" :key="device.id" :value="device.id">
+            {{ device.name }}
+            </option>
+        </select>
+        <p>Dispositivo seleccionado: {{ selectedFilteredDeviceName }}</p>
+    </div>
+    <div v-if="deviceSelect" class="Device info">
+                <span style="font-weight: bold;" >Estado:</span> {{ deviceSelect.state }}
+                <span style="font-weight: bold;">ID:</span> {{ deviceSelect.id }}
+                <span style="font-weight: bold;">Device:</span> {{ deviceSelect.name }}
+                <span style="font-weight: bold;">Visto por ultima vez: </span> {{ deviceSelect.lastSeen }}
+                <span style="font-weight: bold;">Estacion:</span> {{ deviceSelect.ubication }}
+            </div>
+            <div v-else>
+                Seleccione un dispositivo para ver los detalles.
+            </div>
     <!-- map zone -->
     <div v-if="deviceSelect && deviceSelect.coordinates" class="container mt-5">
         <div class="row" >
@@ -75,6 +106,14 @@
             const devices = ref([]);
             const selectedDevice = ref([]);
             const deviceSelect = ref([]);
+
+            // filter ubications
+            const selectedUbication = ref('');
+            // filter devices
+            const filteredDevices = ref([]);
+            const selectedFilteredDevice = ref("");
+
+
             // locations
             const OnboardingLocation = ref ('');
             const numberOfLocations = ref(25); // Valor predeterminado
@@ -101,11 +140,64 @@
                 console.log(devices.value);
             });
 
+            // dropdown filters 
             const handleDeviceSelection = () => {
                 const device = devices.value.find( device => selectedDevice.value === device.id);
                 console.log('Dispositivo seleccionado:', selectedDevice.value);
             };
-            
+
+            const selectedDeviceName = computed(() => {
+                const selectedDeviceObj = devices.value.find( device => device.id === selectedDevice.value );
+                if (selectedDeviceObj) {
+                    console.log('device select: ',selectedDeviceObj.id , selectedDeviceObj.coordinates);
+                    deviceSelect.value = selectedDeviceObj;
+                    circleLocation.value = {
+                        ...circleLocation.value,
+                        center: selectedDeviceObj.coordinates
+                    }
+                    return selectedDeviceObj ? selectedDeviceObj.name : 'Ninguno';
+                } 
+                return '';
+            });
+
+            // filter dropdown ubications, get list ubications
+            const uniqueUbication = computed(()=>{
+                const uniqueUbicationsSet = new Set(devices.value.map(device => device.ubication));
+                const uniqueUbications = [
+                    ...uniqueUbicationsSet
+                ]
+                return uniqueUbications;
+            })
+
+            const handleUbicationSelection = () => {
+                devices.value.find( device => {
+                    device.ubication === selectedUbication.value;
+                });
+            };
+
+            // filter para los devices
+            const updateFilteredDevices = (selectedUbication) => {
+                filteredDevices.value = devices.value.filter(device => device.ubication === selectedUbication);
+            };
+
+            watch( selectedUbication, (newUbication) => {
+                updateFilteredDevices(newUbication);
+            });
+
+            const selectedFilteredDeviceName = computed(() => {
+                const selectedDeviceObj = filteredDevices.value.find(device => device.id === selectedFilteredDevice.value);
+                if (selectedDeviceObj) {
+                    console.log('device select: ',selectedDeviceObj.id , selectedDeviceObj.coordinates);
+                    deviceSelect.value = selectedDeviceObj;
+                    circleLocation.value = {
+                        ...circleLocation.value,
+                        center: selectedDeviceObj.coordinates
+                    }
+                    return selectedDeviceObj ? selectedDeviceObj.name : 'Ninguno';
+                } 
+                return '';
+            });
+
             // Obtener el # de locations para Onboarding
             const historyLocation =async () => {
                 if (selectedDevice.value) {
@@ -121,18 +213,6 @@
                 }
             };
 
-            const selectedDeviceName = computed(() => {
-                const selectedDeviceObj = devices.value.find( device => device.id === selectedDevice.value );
-                if (selectedDeviceObj) {
-                    console.log('device select: ',selectedDeviceObj.id , selectedDeviceObj.coordinates);
-                    deviceSelect.value = selectedDeviceObj;
-                    circleLocation.value = {
-                        ...circleLocation.value,
-                        center: selectedDeviceObj.coordinates
-                    }
-                    return selectedDeviceObj ? selectedDeviceObj.name : 'Ninguno';
-                } 
-            });
 
             return{
                 devices,
@@ -151,6 +231,13 @@
                 historyLocations,
                 lastLocation,
                 numberOfLocations,
+                uniqueUbication,
+                handleUbicationSelection,
+                selectedUbication,
+                updateFilteredDevices,
+                selectedFilteredDeviceName,
+                filteredDevices,
+                selectedFilteredDevice
             }
         },
     });

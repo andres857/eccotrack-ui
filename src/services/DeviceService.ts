@@ -123,15 +123,6 @@ class deviceService {
             },
         },
         {
-            "id": "C26CBA",
-            "name": "Sopladora 2",
-            'ubication': 'Sevilla CTT',
-            coordinates:{
-                lat: 37.4086196534172,
-                lng: -5.959022271
-            },
-        },
-        {
             "id": "C2AEC1",
             "name": "Trituradora 1",
             'ubication': 'Toledo Sagra',
