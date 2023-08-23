@@ -32,15 +32,15 @@ class deviceService {
                 lng: -3.365457714
             },
         },
-        // {
-        //     "id": "C2AA7C",
-        //     "name": "Grupo Electrogeno 4",
-        //     'ubication': 'El Escorial',
-        //     coordinates:{
-        //         lat: 40.5852864961765,
-        //         lng: -4.132255414
-        //     },
-        // },
+        {
+            "id": "C28F15",
+            "name": "Grupo Electrogeno 4",
+            'ubication': 'El Escorial',
+            coordinates:{
+                lat: 40.5852864961765,
+                lng: -4.132255414
+            },
+        },
         {
             "id": "C2CF85",
             "name": "Grupo Electrogeno 5",
@@ -129,6 +129,15 @@ class deviceService {
             coordinates:{
                 lat: 39.9593106554009,
                 lng: -3.84657849
+            },
+        },
+        {
+            "id": "C2AEC1",
+            "name": "T290 1",
+            'ubication': 'Leganes',
+            coordinates:{
+                lat: 40.3502746162539,
+                lng: -3.831896599
             },
         },
         {

@@ -77,7 +77,7 @@ class LocationService {
             differenceTime = `${Math.round(differenceInDays)} dias`;
         } else if(differenceInMinutes < 60){
             differenceTime = `${Math.round(differenceInMinutes)} minutos`;
-        }else {                    
+        }else {
             let differenceInhours = differenceInMilliseconds / (1000 * 60 * 60);
             differenceTime = `${Math.round(differenceInhours)} horas`;
         }
