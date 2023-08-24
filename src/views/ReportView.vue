@@ -1,47 +1,50 @@
 <template>
-  <v-container class="bg-surface-variant">
-    <v-row no-gutters>
-      <v-col cols="12" sm="4">
-        Dispositivos
-      </v-col>
-      <v-col cols="12" sm="4">
-        Dispositivos
-      </v-col>
-      <v-col cols="12" sm="4">
-        Dispositivos
-      </v-col>
-    </v-row>
-  </v-container>
-
-  <!-- {{ devicesListReport }} -->
-  <v-container >
+  <v-container>
     <v-row no-gutters>
       <v-col>
-        {{  devicesListReport }}
+        <div id="example-table"></div>
       </v-col>
     </v-row>
   </v-container>
 </template>
 
 <script lang="ts">
-  import { defineComponent, ref, computed, onMounted, watch } from "vue";
-  import { devicesListReport } from '../services/DeviceService';
+import { defineComponent, onMounted } from "vue";
+import { devicesListReport } from '../services/DeviceService';
+import { TabulatorFull as Tabulator } from 'tabulator-tables';
 
-  export default defineComponent({
-    components: {},
-    setup(){
+export default defineComponent({
+  setup() {
+    onMounted(() => {
+      new Tabulator('#example-table', {
+        data: devicesListReport,
+        layout: "fitColumns",
+        movableRows: true,
+        groupBy: "ubication",
+        paginationSize: 15,
+        downloadRowRange: "all",
+        pagination: "local",
+        downloadConfig: {
+          rowGroups: false
+        },
+        columns: [
+          { title: "Estacion", field: "ubication" },
+          { title: "ID", field: "id" },
+          { title: "Nombre", field: "name", width: 200 },
+          { title: "Conectado", field: "", formatter:"tickCross" },
+          { title: "Last seen", field: "" },
+          { title: "Concentracion", field: 'concentracion', formatter:"tickCross" },
+          { title: "Proximidad", field: 'proximidad', formatter:"tickCross" },
+          { title: "Señal", field: 'qualitySiganl', formatter:"tickCross" },
+          { title: "Onboarding", field: 'onboarding', formatter:"tickCross" },
+          { title: "Tracking", field: '', formatter:"tickCross" }
+        ],
+      });
+    });
 
-      // const devices = ref([]);
-
-      // const reportDevices = onMounted( async () => {
-      //   const infoDevices = await devicesListReport.infoDevices();
-      //   devices.value = infoDevices;
-      //   console.log(devices.value);
-      // });
-      return{
-        devicesListReport,
-      }
-    }
-  });
-
+    return {
+      devicesListReport,
+    };
+  }
+});
 </script>
