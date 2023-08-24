@@ -20,7 +20,7 @@
             <label for="deviceDropdown">Dispositivos en la ubicación seleccionada:</label>
             <select id="deviceDropdown" v-model="selectedFilteredDevice">
                 <option v-for="device in filteredDevices" :key="device.id" :value="device.id">
-                {{ device.name }}
+                    {{ device.name }}
                 </option>
             </select>
             <p>Dispositivo seleccionado: {{ selectedFilteredDeviceName }}</p>

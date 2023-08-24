@@ -87,7 +87,7 @@ class LocationService {
     async deviceIsRange(id: string, locationUbication: any){
         const onboardingLocation = await this.getOnBoardingLocation(id);
         // function que compara ambas y retorna true o false
-        const isRange = await DistanceService.calculateDistance(locationUbication, onboardingLocation, 300);
+        const isRange = await DistanceService.calculateDistance(locationUbication, onboardingLocation, 500);
         return isRange;
     }
     async infoDevices(){
