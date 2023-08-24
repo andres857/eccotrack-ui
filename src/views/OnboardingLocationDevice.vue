@@ -1,38 +1,20 @@
 <template>
-    <!-- <div class="container">
-        <div class="row">
-            <div class=" col-6 mt-3">
-                <label for="deviceDropdown">Selecciona un dispositivo:</label>
-                <select id="deviceDropdown" v-model="selectedDevice" @change="handleDeviceSelection">
-                    <option v-for="device in devices" :key="device" :value="device.id">
-                        {{ device.name }}
-                    </option>
-                </select>
-                <p>Has seleccionado: {{ selectedDeviceName }} con id {{ selectedDevice }}</p>
-            </div>
-            <div v-if="deviceSelect" class="Device info">
-                <span style="font-weight: bold;" >Estado:</span> {{ deviceSelect.state }}
-                <span style="font-weight: bold;">ID:</span> {{ deviceSelect.id }}
-                <span style="font-weight: bold;">Device:</span> {{ deviceSelect.name }}
-                <span style="font-weight: bold;">Visto por ultima vez: </span> {{ deviceSelect.lastSeen }}
-                <span style="font-weight: bold;">Estacion:</span> {{ deviceSelect.ubication }}
-            </div>
-            <div v-else>
-                Seleccione un dispositivo para ver los detalles.
-            </div>
-        </div>
-    </div> -->
     <!-- new filter view -->
+    <div>
     <div class="row">
-        <div>
-            <label for="ubicacionDropdown">Estacion: </label>
-            <select id="ubicacionDropdown" v-model="selectedUbication" @change="updateFilteredDevices(selectedUbication)">
-                <option v-for="ubication in uniqueUbication" :key="ubication" :value="ubication">
-                    {{ ubication }}
-                </option>
-            </select>
-            <p>Ubicación seleccionada: {{ selectedUbication }}</p>
-        </div>
+        <v-select
+            v-model="selectedUbication"
+            :hint="`${selectedUbication}`"
+            :items="uniqueUbication"
+            label="Estacion"
+            variant="outlined"
+            @change="updateFilteredDevices(selectedUbication)"
+            persistent-hint
+            return-object
+            single-line
+        ></v-select>
+        <!-- <p>Ubicación seleccionada: {{ selectedUbication }}</p> -->
+    </div>
         <!-- dropdown devices  -->
         <div>
             <label for="deviceDropdown">Dispositivos en la ubicación seleccionada:</label>
@@ -42,7 +24,15 @@
                 </option>
             </select>
             <p>Dispositivo seleccionado: {{ selectedFilteredDeviceName }}</p>
+            <!-- <v-select
+                v-model="selectedFilteredDevice"
+                :items="filteredDevices"
+                item-value="name"
+                label="Dispositivos en la ubicación seleccionada"
+                @change="handleDeviceSelection()"
+            ></v-select> -->
         </div>
+
         <div v-if="deviceSelect" class="Device info">
             <span style="font-weight: bold;" >Estado:</span> {{ deviceSelect.state }}
             <span style="font-weight: bold;">ID:</span> {{ deviceSelect.id }}
@@ -55,7 +45,6 @@
         </div>
     </div>
 
-    
     <!-- map zone -->
     <div v-if="deviceSelect && deviceSelect.coordinates" class="container mt-5">
         <div class="row" >
@@ -118,18 +107,17 @@
                 onboardingLocation: boolean;
                 onboardingCoordinates: any;
             }
-
             const devices = ref<Device[]>([]);
             const selectedDevice = ref([]);
             const deviceSelect = ref([]);
 
             // filter ubications
-            const selectedUbication = ref('');
+            const selectedUbication = ref(null);
             // filter devices
             const filteredDevices = ref([]);
-            const selectedFilteredDevice = ref("");
+            const selectedFilteredDevice = ref(null);
 
-
+            
             // locations
             const OnboardingLocation = ref ('');
             const numberOfLocations = ref(25); // Valor predeterminado

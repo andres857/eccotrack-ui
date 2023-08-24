@@ -15,7 +15,7 @@ class deviceService {
             },
         },
         {
-            "id": "C0E915",
+            "id": "C2247B",
             "name": "Grupo Electrogeno 2",
             'ubication': 'Chamartin',
             coordinates:{
