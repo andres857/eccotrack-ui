@@ -27,8 +27,7 @@
   </GoogleMap>
 </template>
 
-<script>
-import dotenv from 'dotenv';
+<script lang="ts">
 import { defineComponent, ref, onMounted } from "vue";
 import { GoogleMap, Circle, Marker, InfoWindow, CustomControl } from "vue3-google-map";
 import LocationService from '../services/LocationService';
