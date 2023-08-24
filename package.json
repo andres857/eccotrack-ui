@@ -20,7 +20,8 @@
     "tabulator-tables": "^5.5.0",
     "vue": "^3.3.2",
     "vue-router": "^4.2.0",
-    "vue3-google-map": "^0.15.0"
+    "vue3-google-map": "^0.15.0",
+    "vuetify": "^3.3.14"
   },
   "devDependencies": {
     "@rushstack/eslint-patch": "^1.2.0",
