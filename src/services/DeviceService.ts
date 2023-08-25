@@ -230,7 +230,7 @@ class deviceService {
             'ubication': 'Chamartin',
             concentracion: null,
             proximidad: null,
-            qualitySiganl: false,
+            qualitySignal: false,
             onboarding: false,
             // tracking: true,
             coordinates:{
@@ -244,7 +244,7 @@ class deviceService {
             'ubication': 'Chamartin',
             concentracion: null,
             proximidad: null,
-            qualitySiganl: true,
+            qualitySignal: true,
             onboarding: false,
             // tracking: true,
             coordinates:{
@@ -258,7 +258,7 @@ class deviceService {
             'ubication': 'Alcala de Henares',
             concentracion: true,
             proximidad: true,
-            qualitySiganl: true,
+            qualitySignal: true,
             onboarding: true,
             // tracking: true,
             coordinates:{
@@ -272,7 +272,7 @@ class deviceService {
             'ubication': 'El Escorial',
             concentracion: null,
             proximidad: true,
-            qualitySiganl: true,
+            qualitySignal: true,
             onboarding: false,
             // tracking: false,
             coordinates:{
@@ -286,7 +286,7 @@ class deviceService {
             'ubication': 'Guadalajara',
             concentracion: true,
             proximidad: false,
-            qualitySiganl: false,
+            qualitySignal: false,
             onboarding: false,
             // tracking: true,
             coordinates:{
@@ -300,7 +300,7 @@ class deviceService {
             'ubication': 'Principe Pio',
             concentracion: true,
             proximidad: true,
-            qualitySiganl: true,
+            qualitySignal: true,
             onboarding: true,
             // tracking: true,
             coordinates:{
@@ -314,7 +314,7 @@ class deviceService {
             'ubication': 'Villalba',
             concentracion: true,
             proximidad: false,
-            qualitySiganl: true,
+            qualitySignal: true,
             onboarding: false,
             // tracking: true,
             coordinates:{
@@ -328,7 +328,7 @@ class deviceService {
             'ubication': 'Malaga',
             concentracion: null,
             proximidad: null,
-            qualitySiganl: null,
+            qualitySignal: null,
             onboarding: false,
             // tracking: true,
             coordinates:{
@@ -342,7 +342,7 @@ class deviceService {
             'ubication': 'Malaga',
             concentracion: true,
             proximidad: false,
-            qualitySiganl: true,
+            qualitySignal: true,
             onboarding: false,
             // tracking: true,
             coordinates:{
@@ -356,7 +356,7 @@ class deviceService {
             'ubication': 'Malaga',
             concentracion: true,
             proximidad: true,
-            qualitySiganl: true,
+            qualitySignal: true,
             onboarding: true,
             // tracking: true,
             coordinates:{
@@ -370,7 +370,7 @@ class deviceService {
             'ubication': 'Sevilla CTT',
             concentracion: true,
             proximidad: true,
-            qualitySiganl: true,
+            qualitySignal: true,
             onboarding: true,
             // tracking: true,
             coordinates:{
@@ -384,7 +384,7 @@ class deviceService {
             'ubication': 'Sevilla CTT',
             concentracion: true,
             proximidad: true,
-            qualitySiganl: true,
+            qualitySignal: true,
             onboarding: true,
             // tracking: true,
             coordinates:{
@@ -398,7 +398,7 @@ class deviceService {
             'ubication': 'Sevilla CTT',
             concentracion: true,
             proximidad: true,
-            qualitySiganl: true,
+            qualitySignal: true,
             onboarding: true,
             // tracking: true,
             coordinates:{
@@ -412,7 +412,7 @@ class deviceService {
             'ubication': 'Toledo Sagra',
             concentracion: true,
             proximidad: false,
-            qualitySiganl: false,
+            qualitySignal: false,
             onboarding: false,
             // tracking: true,
             coordinates:{
@@ -426,7 +426,7 @@ class deviceService {
             'ubication': 'Alcorcón',
             concentracion: null,
             proximidad: null,
-            qualitySiganl: true,
+            qualitySignal: true,
             onboarding: false,
             // tracking: true,
             coordinates:{
@@ -440,7 +440,7 @@ class deviceService {
             'ubication': 'Leganes',
             concentracion: true,
             proximidad: true,
-            qualitySiganl: true,
+            qualitySignal: true,
             onboarding: true,
             // tracking: true,
             coordinates:{
@@ -454,7 +454,7 @@ class deviceService {
             'ubication': 'El Pozo',
             concentracion: null,
             proximidad: null,
-            qualitySiganl: false,
+            qualitySignal: false,
             onboarding: false,
             // tracking: true,
             coordinates:{
@@ -468,7 +468,7 @@ class deviceService {
             'ubication': 'Villaverde BMI',
             concentracion: true,
             proximidad: true,
-            qualitySiganl: true,
+            qualitySignal: true,
             onboarding: true,
             // tracking: true,
             coordinates:{
@@ -482,7 +482,7 @@ class deviceService {
             'ubication': 'Villaverde BMI',
             concentracion: true,
             proximidad: true,
-            qualitySiganl: false,
+            qualitySignal: false,
             onboarding: false,
             // tracking: true,
             coordinates:{
@@ -496,7 +496,7 @@ class deviceService {
             'ubication': 'Villaverde BMI',
             concentracion: true,
             proximidad: true,
-            qualitySiganl: true,
+            qualitySignal: true,
             onboarding: true,
             // tracking: true,
             coordinates:{
@@ -510,7 +510,7 @@ class deviceService {
             'ubication': 'Santa Catalina',
             concentracion: true,
             proximidad: false,
-            qualitySiganl: true,
+            qualitySignal: true,
             onboarding: false,
             // tracking: true,
             coordinates:{
@@ -524,7 +524,7 @@ class deviceService {
             'ubication': 'Atocha',
             concentracion: true,
             proximidad: true,
-            qualitySiganl: true,
+            qualitySignal: true,
             onboarding: true,
             // tracking: true,
             coordinates:{
@@ -538,7 +538,7 @@ class deviceService {
             'ubication': 'Piramides',
             concentracion: null,
             proximidad: null,
-            qualitySiganl: false,
+            qualitySignal: false,
             onboarding: false,
             // tracking: true,
             coordinates:{
@@ -552,7 +552,7 @@ class deviceService {
             'ubication': 'Villaverde Bajo',
             concentracion: true,
             proximidad: true,
-            qualitySiganl: true,
+            qualitySignal: true,
             onboarding: true,
             // tracking: true,
             coordinates:{

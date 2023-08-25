@@ -1,6 +1,6 @@
 import axios from 'axios';
 import DistanceService from './DistanceService';
-import { devicesList } from './DeviceService';
+import { devicesList, devicesListReport } from './DeviceService';
 
 // recupera la info de SIGFOX
 const API_URL = 'https://api-nettrotter.windowschannel.com';
@@ -106,6 +106,25 @@ class LocationService {
                 lastSeen: lastSeenDevice,
                 onboardingLocation: IsRange,
                 onboardingCoordinates: onboarding,
+            };
+        }));
+        return devicesUpdated;
+    }
+    async reportDevices(){
+        const devicesUpdated = await Promise.all( devicesListReport.map ( async device => {
+            const deviceinfo = await this.getDeviceInfo(device.id);
+            const lastSeenDevice = await this.lastSeen(deviceinfo.lastCom);
+            return {
+                ubication: device.ubication,
+                id: device.id,
+                name: device.name,
+                state: deviceinfo.comState === 1 ? true : false,
+                lastSeen: lastSeenDevice,
+                concentracion:device.concentracion,
+                proximidad: device.proximidad,
+                qualitySignal: device.qualitySignal,
+                onboarding: device.onboarding,
+                tracking: device.onboarding === true ? true: false,
             };
         }));
         return devicesUpdated;
