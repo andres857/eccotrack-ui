@@ -123,7 +123,7 @@ class deviceService {
             },
         },
         {
-            "id": "C2AEC1",
+            "id": "C26CBA",
             "name": "Trituradora 1",
             'ubication': 'Toledo Sagra',
             coordinates:{
@@ -270,10 +270,10 @@ class deviceService {
             "id": "C28F15",
             "name": "Grupo Electrogeno 4",
             'ubication': 'El Escorial',
-            concentracion: null,
+            concentracion: true,
             proximidad: true,
             qualitySignal: true,
-            onboarding: false,
+            onboarding: true,
             // tracking: false,
             coordinates:{
                 lat: 40.5852864961765,
@@ -407,12 +407,12 @@ class deviceService {
             },
         },
         {
-            "id": "C2AEC1",
+            "id": "C26CBA",
             "name": "Trituradora 1",
             'ubication': 'Toledo Sagra',
             concentracion: true,
             proximidad: false,
-            qualitySignal: false,
+            qualitySignal: true,
             onboarding: false,
             // tracking: true,
             coordinates:{
@@ -424,10 +424,10 @@ class deviceService {
             "id": "C2AEC1",
             "name": "T290 1",
             'ubication': 'Alcorcón',
-            concentracion: null,
-            proximidad: null,
+            concentracion: true,
+            proximidad: true,
             qualitySignal: true,
-            onboarding: false,
+            onboarding: true,
             // tracking: true,
             coordinates:{
                 lat: 40.3502746162539,
