@@ -1,17 +1,23 @@
 <script setup lang="ts">
-  import { RouterLink, RouterView } from 'vue-router'
+  import { RouterView } from 'vue-router'
 </script>
 
 <template>
-  <header class="bg-green-600 text-center py-3">
-    <nav class="grid grid-cols-4 gap-4 justify-center items-center">
-      <!-- <RouterLink to="/" class="text-white font-medium hover:text-gray-300">Home</RouterLink> -->
-      <RouterLink to="/devices" class="text-white font-medium hover:text-gray-300">Devices</RouterLink>
-      <RouterLink to="/onboarding" class="text-white font-medium hover:text-gray-300">Onboarding</RouterLink>
-      <RouterLink to="/onboarding-device" class="text-white font-medium hover:text-gray-300">Onboarding Device</RouterLink>
-      <RouterLink to="/report" class="text-white font-medium hover:text-gray-300">Report</RouterLink>
-      <!-- <RouterLink to="/locations" class="text-white font-medium hover:text-gray-300">Locations</RouterLink> -->
-    </nav>
-  </header>
-  <RouterView />
+  <v-app>
+    <v-app-bar color="green" dark>
+      <!-- En Vuetify, el centro de texto y otros estilos comunes ya están integrados en los componentes. -->
+      <v-spacer></v-spacer> <!-- Centrar elementos en el app-bar -->
+      <!-- <v-btn text :to="/">Home</v-btn> -->
+      <v-btn text :to="'/devices'">Devices</v-btn>
+      <v-btn text :to="'/onboarding'">Onboarding</v-btn>
+      <v-btn text :to="'/onboarding-device'">Onboarding Device</v-btn>
+      <v-btn text :to="'/report'">Report</v-btn>
+      <!-- <v-btn text :to="/locations">Locations</v-btn> -->
+      <v-spacer></v-spacer> <!-- Centrar elementos en el app-bar -->
+    </v-app-bar>
+
+    <v-main>
+      <RouterView />
+    </v-main>
+  </v-app>
 </template>

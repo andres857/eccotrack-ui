@@ -1,16 +1,19 @@
 <template>
-    <br><br>
-    <div class="container">
-        <div class="card">
-            <div class="card-header"></div>
-            <div class="card-body">
+    <v-container>
+        <v-row justify="center">
+            <!-- <v-col>
                 <distance></distance>
-                <br><hr><br>
+            </v-col> -->
+            <v-col cols="4">
                 <h3>Dispositivos</h3>
+            </v-col>
+        </v-row>
+        <v-row justify="center">
+            <v-col cols="10">
                 <div id="example-table"></div>
-            </div>
-        </div>
-    </div>
+            </v-col>
+        </v-row>
+    </v-container>
 </template>
 
 <script lang="ts">

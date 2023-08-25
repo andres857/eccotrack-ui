@@ -1,54 +1,59 @@
 <template>
     <!-- new filter view -->
-    <div>
-    <div class="row">
-        <v-select
-            v-model="selectedUbication"
-            :hint="`${selectedUbication}`"
-            :items="uniqueUbication"
-            label="Estacion"
-            variant="outlined"
-            @change="updateFilteredDevices(selectedUbication)"
-            persistent-hint
-            return-object
-            single-line
-        ></v-select>
-        <!-- <p>Ubicación seleccionada: {{ selectedUbication }}</p> -->
-    </div>
-        <!-- dropdown devices  -->
-        <div>
-            <label for="deviceDropdown">Dispositivos en la ubicación seleccionada:</label>
-            <select id="deviceDropdown" v-model="selectedFilteredDevice">
-                <option v-for="device in filteredDevices" :key="device.id" :value="device.id">
-                    {{ device.name }}
-                </option>
-            </select>
-            <p>Dispositivo seleccionado: {{ selectedFilteredDeviceName }}</p>
-            <!-- <v-select
-                v-model="selectedFilteredDevice"
-                :items="filteredDevices"
-                item-value="name"
-                label="Dispositivos en la ubicación seleccionada"
-                @change="handleDeviceSelection()"
-            ></v-select> -->
-        </div>
-
-        <div v-if="deviceSelect" class="Device info">
-            <span style="font-weight: bold;" >Estado:</span> {{ deviceSelect.state }}
-            <span style="font-weight: bold;">ID:</span> {{ deviceSelect.id }}
-            <span style="font-weight: bold;">Device:</span> {{ deviceSelect.name }}
-            <span style="font-weight: bold;">Visto por ultima vez: </span> {{ deviceSelect.lastSeen }}
-            <span style="font-weight: bold;">Estacion:</span> {{ deviceSelect.ubication }}
-        </div>
-        <div v-else>
-            Seleccione un dispositivo para ver los detalles.
-        </div>
-    </div>
-
-    <!-- map zone -->
-    <div v-if="deviceSelect && deviceSelect.coordinates" class="container mt-5">
-        <div class="row" >
-            <div class="col-8">
+    <v-container>
+        <v-row justify="center" class="mt-4">
+            <!-- filters search -->
+            <v-col cols="4" class="mt-6">
+                <v-select
+                    v-model="selectedUbication"
+                    :hint="`${selectedUbication}`"
+                    :items="uniqueUbication"
+                    label="Estacion"
+                    variant="outlined"
+                    @change="updateFilteredDevices(selectedUbication)"
+                    persistent-hint
+                    return-object
+                    single-line
+                ></v-select>    
+            </v-col>
+            <v-col cols="4">
+                <div>
+                    <label for="deviceDropdown">Dispositivos en la ubicación seleccionada:</label>
+                    <select  class="custom-vuetify-select" id="deviceDropdown" v-model="selectedFilteredDevice">
+                        <option v-for="device in filteredDevices" :key="device.id" :value="device.id">
+                            {{ device.name }}
+                        </option>
+                    </select>
+                    <p>Dispositivo seleccionado: {{ selectedFilteredDeviceName }}</p>
+                    <!-- <v-select
+                        v-model="selectedFilteredDevice"
+                        :items="filteredDevices"
+                        item-value="name"
+                        label="Dispositivos en la ubicación seleccionada"
+                        @change="handleDeviceSelection()"
+                    ></v-select> -->
+                </div>
+            </v-col>
+        </v-row>
+        <!-- info device -->
+        <v-row justify="center">
+            <v-col cols="10">
+                <!-- info device select -->
+                <div v-if="deviceSelect" class="Device info">
+                    <span style="font-weight: bold;" >Estado:</span> {{ deviceSelect.state }} |
+                    <span style="font-weight: bold;">ID:</span> {{ deviceSelect.id }} |
+                    <span style="font-weight: bold;">Device:</span> {{ deviceSelect.name }} |
+                    <span style="font-weight: bold;">Visto por ultima vez: </span> {{ deviceSelect.lastSeen }} |
+                    <span style="font-weight: bold;">Estacion:</span> {{ deviceSelect.ubication }}
+                </div>
+                <div v-else>
+                    <span style="font-weight: bold;"> Seleccione un dispositivo para ver los detalles. </span>
+                </div>
+            </v-col>
+        </v-row>
+        <!-- MAPS view -->
+        <v-row v-if="deviceSelect && deviceSelect.coordinates">
+            <v-col cols="7">
                 <GoogleMap 
                     api-key="AIzaSyAOUZ9OeINieyhHHLJL0nRIOfizXyyxr8E" 
                     style="width: 100%; height: 500px" 
@@ -67,25 +72,36 @@
                         </Marker>
                     </div>
                 </GoogleMap>
-            </div>
-            <!-- botones view -->
-            <div class="col-4">
-                <div class="input-group input-group-sm mb-3">
-                    <span class="input-group-text" id="inputGroup-sizing-sm"> # de ubicaciones </span>
-                    <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm"
-                           v-model="numberOfLocations"
-                           @keyup.enter="historyLocation"
-                    >
-                </div>
-                <button @click="historyLocation" type="button" class="btn btn-outline-success">Obtener localizaciones</button>
-                <button type="button" class="btn btn-outline-primary" @click="OnboardingLocationDevice">Calcular Onboarding</button>
-                <button type="button" class="btn btn-outline-success">Guardar Ubicacion</button>
-            </div>
-        </div>
-    </div>
-    <div v-else>
-        buscando
-    </div>
+            </v-col>
+            <v-col cols="5">
+                <v-row justify="start" class="mt-2">
+                    <v-col cols="10">
+                        <v-text-field
+                            prepend-icon="mdi-pound" 
+                            label="# de ubicaciones"
+                            v-model="numberOfLocations"
+                            @keyup.enter="historyLocation"
+                            dense
+                            outlined
+                        ></v-text-field>
+                    </v-col>
+                </v-row>
+                <v-row justify="start">
+                    <v-col cols="6">
+                        <v-btn  block rounded="xs" elevation="4" size="small" @click="historyLocation">Obtener localizaciones</v-btn>
+                    </v-col>
+                    <v-col cols="6">
+                        <v-btn block rounded="xs" elevation="4" size="small" @click="OnboardingLocationDevice">Calcular Onboarding</v-btn>
+                    </v-col>
+                </v-row>
+            </v-col>
+        </v-row>
+        <v-row justify="center" v-else>
+            <v-col cols="4">
+                <span>Esperando Dispositivo</span>
+            </v-col>
+        </v-row>
+    </v-container>
 </template>
 
 <script lang="ts">
@@ -227,3 +243,35 @@
         },
     });
 </script>
+
+<style>
+  .custom-vuetify-select {
+      width: 100%;
+      height: 56px; /* Altura general de Vuetify para campos de texto y select */
+      border: 1px solid #ccc; /* Borde general */
+      border-radius: 4px; /* Bordes redondeados */
+      padding: 12px 16px; /* Espaciado interno para texto y dropdown */
+      font-size: 16px; /* Tamaño de letra general */
+      transition: border 0.2s; /* Transición suave para el borde */
+      box-sizing: border-box; /* Asegurar que el padding y el borde no sumen al tamaño total */
+      appearance: none; /* Remover estilización por defecto en algunos navegadores */
+      background-color: #fff;
+      position: relative;
+  }
+
+  .custom-vuetify-select:focus {
+      border-color: #1976d2; /* Cambia el color del borde al color primario de Vuetify cuando está enfocado */
+      outline: none; /* Remover el contorno por defecto del navegador */
+  }
+
+  /* Estilo para la flecha de dropdown */
+  .custom-vuetify-select::after {
+      content: '\25BC'; /* Flecha hacia abajo */
+      font-size: 12px;
+      position: absolute;
+      right: 16px;
+      top: 50%;
+      transform: translateY(-50%);
+      pointer-events: none; /* Asegurarse de que no interfiera con clics */
+  }
+</style>

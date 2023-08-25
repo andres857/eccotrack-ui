@@ -1,17 +1,5 @@
 <template>
-  <v-container class="bg-surface-variant">
-    <v-row no-gutters>
-      <v-col cols="12" sm="4">
-        Dispositivos
-      </v-col>
-      <v-col cols="12" sm="4">
-        Dispositivos
-      </v-col>
-      <v-col cols="12" sm="4">
-        Dispositivos
-      </v-col>
-    </v-row>
-  </v-container>
+
 
   <!-- {{ devicesListReport }} -->
   <v-container >
