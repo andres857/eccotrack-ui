@@ -1,10 +1,8 @@
 <template>
     <v-container>
         <v-row justify="center">
-            <!-- <v-col>
-                <distance></distance>
-            </v-col> -->
             <v-col cols="4">
+                <!-- <distance></distance> -->
                 <h3>Dispositivos</h3>
             </v-col>
         </v-row>
