@@ -140,9 +140,9 @@
             const historyLocations = ref([]);
             const lastLocation = ref('');
 
-            const markerIcon = 'https://maps.google.com/mapfiles/ms/icons/green-dot.png';
-            const markerIconOnboardingLocation = 'https://maps.google.com/mapfiles/ms/icons/orange-dot.png';
-            const markerIconLocations = 'https://maps.google.com/mapfiles/ms/icons/blue-dot.png';
+            const markerIcon = 'https://maps.gstatic.com/mapfiles/ms/icons/green-dot.png';
+            const markerIconOnboardingLocation = 'https://maps.gstatic.com/mapfiles/ms/icons/orange-dot.png';
+            const markerIconLocations = 'https://maps.gstatic.com/mapfiles/ms/icons/blue-dot.png';
 
             const circleLocation = ref({
                 center: { lat: 0, lng: 0 },
