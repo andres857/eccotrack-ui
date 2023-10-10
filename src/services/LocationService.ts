@@ -9,7 +9,7 @@ class LocationService {
 
     async getDevices(): Promise<any> {
         try {
-            const { data } = await axios.get(`${API_URL}/sigfox/devices`);
+            const { data } = await axios.get(`${API_URL}/sigfox/mi/devices`);
             const devices = data.data.map( (item: any) =>{
                 return {
                     id: item.id,
@@ -23,7 +23,7 @@ class LocationService {
     }
     async locations(id: string, limit = 25): Promise<any>{
         try {
-            const locations = await axios.get(`${API_URL}/history-location/${id}?limit=${limit}`);          
+            const locations = await axios.get(`${API_URL}/history-location/mi/${id}?limit=${limit}`);          
             console.log('locationService * location history', locations.data);
             return locations.data;
         } catch (error) {
@@ -32,7 +32,7 @@ class LocationService {
     }
     async getDeviceInfo(id: string): Promise<any> {
         try {
-            const { data } = await axios.get(`${API_URL}/sigfox/devices/${id}`);            
+            const { data } = await axios.get(`${API_URL}/sigfox/mi/devices/${id}`);            
             return {
                 id:data.id,
                 sequenceNumber:data.sequenceNumber,
@@ -50,7 +50,7 @@ class LocationService {
     }
     async getOnBoardingLocation(id:string, limit = 25): Promise<any> {
         try {
-            const onboarding = await axios.get(`${API_URL}/history-location/onboarding/${id}?limit=${limit}`);          
+            const onboarding = await axios.get(`${API_URL}/history-location/mi/onboarding/${id}?limit=${limit}`);          
             return onboarding.data;
         } catch (error) {
             throw error;
@@ -58,7 +58,7 @@ class LocationService {
     }
     async getLastLocation(id:string): Promise<any>{
         try {
-            const { data } = await axios.get(`${API_URL}/history-location/last/${id}`);
+            const { data } = await axios.get(`${API_URL}/history-location/mi/last/${id}`);
             // console.log(`device with id: ${id} last ubication: ${data}`);            
             return data;
         } catch (error) {

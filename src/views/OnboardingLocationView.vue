@@ -1,8 +1,8 @@
 <template>
   <v-container class="mt-5">
     <v-row justify="center">
-      <v-col cols="4" class="mt-1"> 
 
+      <v-col cols="4" class="mt-1">
         <label for="deviceDropdown">Selecciona un dispositivo:</label>
         <select class="custom-vuetify-select" id="deviceDropdown" v-model="selectedDevice" @change="handleDeviceSelection">
           <option v-for="device in devicesList" :key="device" :value="device.id">

@@ -15,10 +15,7 @@
     },
     setup(){
       const devices = ref(null);
-      onMounted( async ()=>{
-            // devices.value = await LocationService.getOnBoardingLocation('C1BDCB');
-            // console.log(devices.value);
-    
+      onMounted( async ()=>{    
             const devices = await LocationService.infoDevices();
             console.log("+++++++++ view location +++++++++++++");
             console.log(devices);
