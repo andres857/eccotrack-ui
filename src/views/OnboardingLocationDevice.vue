@@ -155,6 +155,7 @@
             });
 
             const listDevices = onMounted( async () => {
+                console.log('Onmounted list devices');
                 const infoDevices = await LocationService.infoDevices();
                 devices.value = infoDevices;
                 console.log(devices.value);

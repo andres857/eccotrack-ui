@@ -32,8 +32,13 @@ class LocationService {
     }
     async getDeviceInfo(id: string): Promise<any> {
         try {
-            const { data } = await axios.get(`${API_URL}/sigfox/mi/devices/${id}`);            
-            return {
+            const { data } = await axios.get(`${API_URL}/sigfox/mi/devices/${id}`);
+            console.log('id device',id);
+            
+            console.log('****************------***********');            
+            console.log(data);
+            console.log('****************------***********');
+            const info = {
                 id:data.id,
                 sequenceNumber:data.sequenceNumber,
                 lastCom:data.lastCom,//The last time (in milliseconds since the Unix Epoch) the device has communicated
@@ -43,7 +48,11 @@ class LocationService {
                 deviceType:data.deviceType,
                 group:data.group,
                 qualitySignal: data.lqi
-            }           
+            }
+            console.log('---------');
+            console.log(info);
+            console.log('----------');
+            return info;
         } catch (error) {
             throw error;
         }

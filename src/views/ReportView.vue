@@ -31,9 +31,9 @@ export default defineComponent({
           rowGroups: false
         },
         columns: [
-          { title: "Estacion", field: "ubication" },
+          { title: "Sede", field: "ubication" },
           { title: "ID", field: "id" },
-          { title: "Nombre", field: "name", width: 200 },
+          { title: "Nombre ID", field: "name", width: 200 },
           { title: "Estado", field: "state", formatter:"tickCross" },
           { title: "Last seen", field: "lastSeen" },
           { title: "Concentracion", field: 'concentracion', formatter:"tickCross" },
