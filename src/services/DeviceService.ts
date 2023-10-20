@@ -10,8 +10,8 @@ class deviceService {
             "name": "348875",
            "ubication":"Makeitalia",
             coordinates:{
-                lat: 44.65996291256079,
-                lng: 10.969647276087807
+                lat: 44.51182078113969,
+                lng: 11.278424781706551
             },
         },
         {
@@ -19,8 +19,8 @@ class deviceService {
             "name": "348882",
             "ubication":"Makeitalia",
             coordinates:{
-                lat: 44.65996291256079,
-                lng: 10.969647276087807
+                lat: 44.51182078113969,
+                lng: 11.278424781706551
             },
         },
         {
@@ -28,8 +28,8 @@ class deviceService {
             "name": "348EEC",
             "ubication":"Makeitalia",
             coordinates:{
-                lat: 44.65996291256079,
-                lng: 10.969647276087807
+                lat: 44.51182078113969,
+                lng: 11.278424781706551
             },
         },
         {
@@ -37,8 +37,8 @@ class deviceService {
             "name": "3490EF",
             "ubication":"Makeitalia",
             coordinates:{
-                lat: 44.65996291256079,
-                lng: 10.969647276087807
+                lat: 44.51182078113969,
+                lng: 11.278424781706551
             },
         },
         {
@@ -46,8 +46,8 @@ class deviceService {
             "name": "C03498",
             "ubication":"Makeitalia",
             coordinates:{
-                lat: 44.65996291256079,
-                lng: 10.969647276087807
+                lat: 44.51182078113969,
+                lng: 11.278424781706551
             },
         },
         {
@@ -55,8 +55,8 @@ class deviceService {
             "name": "C0C967",
             "ubication":"Makeitalia",
             coordinates:{
-                lat: 44.65996291256079,
-                lng: 10.969647276087807
+                lat: 44.51182078113969,
+                lng: 11.278424781706551
             },
         },
         {
@@ -64,8 +64,8 @@ class deviceService {
             "name": "C0CB8B",
             "ubication":"Makeitalia",
             coordinates:{
-                lat: 44.65996291256079,
-                lng: 10.969647276087807
+                lat: 44.51182078113969,
+                lng: 11.278424781706551
             },
         },
         {
@@ -73,8 +73,8 @@ class deviceService {
             "name": "C0E91C",
             "ubication":"Makeitalia",
             coordinates:{
-                lat: 44.65996291256079,
-                lng: 10.969647276087807
+                lat: 44.51182078113969,
+                lng: 11.278424781706551
             },
         },
         {
@@ -82,8 +82,8 @@ class deviceService {
             "name": "C0ED89",
             "ubication":"Makeitalia",
             coordinates:{
-                lat: 44.65996291256079,
-                lng: 10.969647276087807
+                lat: 44.51182078113969,
+                lng: 11.278424781706551
             },
         },
         {
@@ -91,8 +91,8 @@ class deviceService {
             "name": "C1BFCF",
             "ubication":"Makeitalia",
             coordinates:{
-                lat: 44.65996291256079,
-                lng: 10.969647276087807
+                lat: 44.51182078113969,
+                lng: 11.278424781706551
             },
         },
         {
@@ -100,8 +100,8 @@ class deviceService {
             "name": "C1C1E1",
             "ubication":"Makeitalia",
             coordinates:{
-                lat: 44.65996291256079,
-                lng: 10.969647276087807
+                lat: 44.51182078113969,
+                lng: 11.278424781706551
             },
         },
         {
@@ -109,8 +109,8 @@ class deviceService {
             "name": "C1C20D",
             "ubication":"Makeitalia",
             coordinates:{
-                lat: 44.65996291256079,
-                lng: 10.969647276087807
+                lat: 44.51182078113969,
+                lng: 11.278424781706551
             },
         },
         {
@@ -118,8 +118,8 @@ class deviceService {
             "name": "C1CCFF",
             "ubication":"Makeitalia",
             coordinates:{
-                lat: 44.65996291256079,
-                lng: 10.969647276087807
+                lat: 44.51182078113969,
+                lng: 11.278424781706551
             },
         },
         {
@@ -127,8 +127,8 @@ class deviceService {
             "name": "C218D0",
             "ubication":"Makeitalia",
             coordinates:{
-                lat: 44.65996291256079,
-                lng: 10.969647276087807
+                lat: 44.51182078113969,
+                lng: 11.278424781706551
             },
         },
         {
@@ -136,8 +136,8 @@ class deviceService {
             "name": "C220F6",
             "ubication":"Makeitalia",
             coordinates:{
-                lat: 44.65996291256079,
-                lng: 10.969647276087807
+                lat: 44.51182078113969,
+                lng: 11.278424781706551
             },
         },
         {
@@ -145,8 +145,8 @@ class deviceService {
             "name": "C223CA",
             "ubication":"Makeitalia",
             coordinates:{
-                lat: 44.65996291256079,
-                lng: 10.969647276087807
+                lat: 44.51182078113969,
+                lng: 11.278424781706551
             },
         },
         {
@@ -154,8 +154,8 @@ class deviceService {
             "name": "C223D2",
             "ubication":"Makeitalia",
             coordinates:{
-                lat: 44.65996291256079,
-                lng: 10.969647276087807
+                lat: 44.51182078113969,
+                lng: 11.278424781706551
             },
         },
         {
@@ -163,8 +163,8 @@ class deviceService {
             "name": "C22493",
             "ubication":"Makeitalia",
             coordinates:{
-                lat: 44.65996291256079,
-                lng: 10.969647276087807
+                lat: 44.51182078113969,
+                lng: 11.278424781706551
             },
         },
         {
@@ -172,8 +172,8 @@ class deviceService {
             "name": "C225C1",
             "ubication":"Makeitalia",
             coordinates:{
-                lat: 44.65996291256079,
-                lng: 10.969647276087807
+                lat: 44.51182078113969,
+                lng: 11.278424781706551
             },
         },
         {
@@ -181,8 +181,8 @@ class deviceService {
             "name": "C23889",
             "ubication":"Makeitalia",
             coordinates:{
-                lat: 44.65996291256079,
-                lng: 10.969647276087807
+                lat: 44.51182078113969,
+                lng: 11.278424781706551
             },
         },
         {
@@ -190,8 +190,8 @@ class deviceService {
             "name": "C25907",
             "ubication":"Makeitalia",
             coordinates:{
-                lat: 44.65996291256079,
-                lng: 10.969647276087807
+                lat: 44.51182078113969,
+                lng: 11.278424781706551
             },
         },
         {
@@ -199,8 +199,8 @@ class deviceService {
             "name": "C25D6A",
             "ubication":"Makeitalia",
             coordinates:{
-                lat: 44.65996291256079,
-                lng: 10.969647276087807
+                lat: 44.51182078113969,
+                lng: 11.278424781706551
             },
         },
         {
@@ -208,8 +208,8 @@ class deviceService {
             "name": "C261B7",
             "ubication":"Makeitalia",
             coordinates:{
-                lat: 44.65996291256079,
-                lng: 10.969647276087807
+                lat: 44.51182078113969,
+                lng: 11.278424781706551
             },
         },
         {
@@ -217,8 +217,8 @@ class deviceService {
             "name": "C263F1",
             "ubication":"Makeitalia",
             coordinates:{
-                lat: 44.65996291256079,
-                lng: 10.969647276087807
+                lat: 44.51182078113969,
+                lng: 11.278424781706551
             },
         },
         {
@@ -226,8 +226,8 @@ class deviceService {
             "name": "C26858",
             "ubication":"Makeitalia",
             coordinates:{
-                lat: 44.65996291256079,
-                lng: 10.969647276087807
+                lat: 44.51182078113969,
+                lng: 11.278424781706551
             },
         },
         {
@@ -235,8 +235,8 @@ class deviceService {
             "name": "C26EEB",
             "ubication":"Makeitalia",
             coordinates:{
-                lat: 44.65996291256079,
-                lng: 10.969647276087807
+                lat: 44.51182078113969,
+                lng: 11.278424781706551
             },
         },
         {
@@ -244,8 +244,8 @@ class deviceService {
             "name": "C284E6",
             "ubication":"Makeitalia",
             coordinates:{
-                lat: 44.65996291256079,
-                lng: 10.969647276087807
+                lat: 44.51182078113969,
+                lng: 11.278424781706551
             },
         },
         {
@@ -253,8 +253,8 @@ class deviceService {
             "name": "C28CF9",
             "ubication":"Makeitalia",
             coordinates:{
-                lat: 44.65996291256079,
-                lng: 10.969647276087807
+                lat: 44.51182078113969,
+                lng: 11.278424781706551
             },
         },
         {
@@ -262,8 +262,8 @@ class deviceService {
             "name": "C2A6A8",
             "ubication":"Makeitalia",
             coordinates:{
-                lat: 44.65996291256079,
-                lng: 10.969647276087807
+                lat: 44.51182078113969,
+                lng: 11.278424781706551
             },
         },
         {
@@ -271,8 +271,8 @@ class deviceService {
             "name": "C2AA6E",
             "ubication":"Makeitalia",
             coordinates:{
-                lat: 44.65996291256079,
-                lng: 10.969647276087807
+                lat: 44.51182078113969,
+                lng: 11.278424781706551
             },
         },
         {
@@ -280,8 +280,8 @@ class deviceService {
             "name": "C2AB55",
             "ubication":"Makeitalia",
             coordinates:{
-                lat: 44.65996291256079,
-                lng: 10.969647276087807
+                lat: 44.51182078113969,
+                lng: 11.278424781706551
             },
         },
         {
@@ -289,8 +289,8 @@ class deviceService {
             "name": "C2ACEC",
             "ubication":"Makeitalia",
             coordinates:{
-                lat: 44.65996291256079,
-                lng: 10.969647276087807
+                lat: 44.51182078113969,
+                lng: 11.278424781706551
             },
         },
         {
@@ -298,8 +298,8 @@ class deviceService {
             "name": "C2ACFC",
             "ubication":"Makeitalia",
             coordinates:{
-                lat: 44.65996291256079,
-                lng: 10.969647276087807
+                lat: 44.51182078113969,
+                lng: 11.278424781706551
             },
         },
         {
@@ -307,8 +307,8 @@ class deviceService {
             "name": "C2AFCA",
             "ubication":"Makeitalia",
             coordinates:{
-                lat: 44.65996291256079,
-                lng: 10.969647276087807
+                lat: 44.51182078113969,
+                lng: 11.278424781706551
             },
         },
         {
@@ -316,8 +316,8 @@ class deviceService {
             "name": "C2B10F",
             "ubication":"Makeitalia",
             coordinates:{
-                lat: 44.65996291256079,
-                lng: 10.969647276087807
+                lat: 44.51182078113969,
+                lng: 11.278424781706551
             },
         },
         {
@@ -325,8 +325,8 @@ class deviceService {
             "name": "C2CF4A",
             "ubication":"Makeitalia",
             coordinates:{
-                lat: 44.65996291256079,
-                lng: 10.969647276087807
+                lat: 44.51182078113969,
+                lng: 11.278424781706551
             },
         },
         {
@@ -334,8 +334,8 @@ class deviceService {
             "name": "C2CF7C",
             "ubication":"Makeitalia",
             coordinates:{
-                lat: 44.65996291256079,
-                lng: 10.969647276087807
+                lat: 44.51182078113969,
+                lng: 11.278424781706551
             },
         },
         {
@@ -343,8 +343,8 @@ class deviceService {
             "name": "C2CF87",
             "ubication":"Makeitalia",
             coordinates:{
-                lat: 44.65996291256079,
-                lng: 10.969647276087807
+                lat: 44.51182078113969,
+                lng: 11.278424781706551
             },
         },
         {
@@ -352,8 +352,8 @@ class deviceService {
             "name": "C2D054",
             "ubication":"Makeitalia",
             coordinates:{
-                lat: 44.65996291256079,
-                lng: 10.969647276087807
+                lat: 44.51182078113969,
+                lng: 11.278424781706551
             },
         }
     ]
@@ -368,9 +368,10 @@ class deviceService {
            qualitySignal: false,
            onboarding: false,
            // tracking: true,
+           
             coordinates:{
-                lat: 44.65996291256079,
-                lng: 10.969647276087807
+                lat: 44.51182078113969,
+                lng: 11.278424781706551
             },
         },
         {
@@ -383,8 +384,8 @@ class deviceService {
            onboarding: false,
            // tracking: true,
             coordinates:{
-                lat: 44.65996291256079,
-                lng: 10.969647276087807
+                lat: 44.51182078113969,
+                lng: 11.278424781706551
             },
         },
         {
@@ -397,8 +398,8 @@ class deviceService {
            onboarding: false,
            // tracking: true,
             coordinates:{
-                lat: 44.65996291256079,
-                lng: 10.969647276087807
+                lat: 44.51182078113969,
+                lng: 11.278424781706551
             },
         },
         {
@@ -411,8 +412,8 @@ class deviceService {
            onboarding: false,
            // tracking: true,
             coordinates:{
-                lat: 44.65996291256079,
-                lng: 10.969647276087807
+                lat: 44.51182078113969,
+                lng: 11.278424781706551
             },
         },
         {
@@ -425,8 +426,8 @@ class deviceService {
            onboarding: false,
            // tracking: true,
             coordinates:{
-                lat: 44.65996291256079,
-                lng: 10.969647276087807
+                lat: 44.51182078113969,
+                lng: 11.278424781706551
             },
         },
         {
@@ -439,8 +440,8 @@ class deviceService {
            onboarding: false,
            // tracking: true,
             coordinates:{
-                lat: 44.65996291256079,
-                lng: 10.969647276087807
+                lat: 44.51182078113969,
+                lng: 11.278424781706551
             },
         },
         {
@@ -453,8 +454,8 @@ class deviceService {
            onboarding: false,
            // tracking: true,
             coordinates:{
-                lat: 44.65996291256079,
-                lng: 10.969647276087807
+                lat: 44.51182078113969,
+                lng: 11.278424781706551
             },
         },
         {
@@ -467,8 +468,8 @@ class deviceService {
            onboarding: false,
            // tracking: true,
             coordinates:{
-                lat: 44.65996291256079,
-                lng: 10.969647276087807
+                lat: 44.51182078113969,
+                lng: 11.278424781706551
             },
         },
         {
@@ -481,8 +482,8 @@ class deviceService {
            onboarding: false,
            // tracking: true,
             coordinates:{
-                lat: 44.65996291256079,
-                lng: 10.969647276087807
+                lat: 44.51182078113969,
+                lng: 11.278424781706551
             },
         },
         {
@@ -495,8 +496,8 @@ class deviceService {
            onboarding: false,
            // tracking: true,
             coordinates:{
-                lat: 44.65996291256079,
-                lng: 10.969647276087807
+                lat: 44.51182078113969,
+                lng: 11.278424781706551
             },
         },
         {
@@ -509,8 +510,8 @@ class deviceService {
            onboarding: false,
            // tracking: true,
             coordinates:{
-                lat: 44.65996291256079,
-                lng: 10.969647276087807
+                lat: 44.51182078113969,
+                lng: 11.278424781706551
             },
         },
         {
@@ -523,8 +524,8 @@ class deviceService {
            onboarding: false,
            // tracking: true,
             coordinates:{
-                lat: 44.65996291256079,
-                lng: 10.969647276087807
+                lat: 44.51182078113969,
+                lng: 11.278424781706551
             },
         },
         {
@@ -537,8 +538,8 @@ class deviceService {
            onboarding: false,
            // tracking: true,
             coordinates:{
-                lat: 44.65996291256079,
-                lng: 10.969647276087807
+                lat: 44.51182078113969,
+                lng: 11.278424781706551
             },
         },
         {
@@ -551,8 +552,8 @@ class deviceService {
            onboarding: false,
            // tracking: true,
             coordinates:{
-                lat: 44.65996291256079,
-                lng: 10.969647276087807
+                lat: 44.51182078113969,
+                lng: 11.278424781706551
             },
         },
         {
@@ -565,8 +566,8 @@ class deviceService {
            onboarding: false,
            // tracking: true,
             coordinates:{
-                lat: 44.65996291256079,
-                lng: 10.969647276087807
+                lat: 44.51182078113969,
+                lng: 11.278424781706551
             },
         },
         {
@@ -579,8 +580,8 @@ class deviceService {
            onboarding: false,
            // tracking: true,
             coordinates:{
-                lat: 44.65996291256079,
-                lng: 10.969647276087807
+                lat: 44.51182078113969,
+                lng: 11.278424781706551
             },
         },
         {
@@ -593,8 +594,8 @@ class deviceService {
            onboarding: false,
            // tracking: true,
             coordinates:{
-                lat: 44.65996291256079,
-                lng: 10.969647276087807
+                lat: 44.51182078113969,
+                lng: 11.278424781706551
             },
         },
         {
@@ -607,8 +608,8 @@ class deviceService {
            onboarding: false,
            // tracking: true,
             coordinates:{
-                lat: 44.65996291256079,
-                lng: 10.969647276087807
+                lat: 44.51182078113969,
+                lng: 11.278424781706551
             },
         },
         {
@@ -621,8 +622,8 @@ class deviceService {
            onboarding: false,
            // tracking: true,
             coordinates:{
-                lat: 44.65996291256079,
-                lng: 10.969647276087807
+                lat: 44.51182078113969,
+                lng: 11.278424781706551
             },
         },
         {
@@ -635,8 +636,8 @@ class deviceService {
            onboarding: false,
            // tracking: true,
             coordinates:{
-                lat: 44.65996291256079,
-                lng: 10.969647276087807
+                lat: 44.51182078113969,
+                lng: 11.278424781706551
             },
         },
         {
@@ -649,8 +650,8 @@ class deviceService {
            onboarding: false,
            // tracking: true,
             coordinates:{
-                lat: 44.65996291256079,
-                lng: 10.969647276087807
+                lat: 44.51182078113969,
+                lng: 11.278424781706551
             },
         },
         {
@@ -663,8 +664,8 @@ class deviceService {
            onboarding: false,
            // tracking: true,
             coordinates:{
-                lat: 44.65996291256079,
-                lng: 10.969647276087807
+                lat: 44.51182078113969,
+                lng: 11.278424781706551
             },
         },
         {
@@ -677,8 +678,8 @@ class deviceService {
            onboarding: false,
            // tracking: true,
             coordinates:{
-                lat: 44.65996291256079,
-                lng: 10.969647276087807
+                lat: 44.51182078113969,
+                lng: 11.278424781706551
             },
         },
         {
@@ -691,8 +692,8 @@ class deviceService {
            onboarding: false,
            // tracking: true,
             coordinates:{
-                lat: 44.65996291256079,
-                lng: 10.969647276087807
+                lat: 44.51182078113969,
+                lng: 11.278424781706551
             },
         },
         {
@@ -705,8 +706,8 @@ class deviceService {
            onboarding: false,
            // tracking: true,
             coordinates:{
-                lat: 44.65996291256079,
-                lng: 10.969647276087807
+                lat: 44.51182078113969,
+                lng: 11.278424781706551
             },
         },
         {
@@ -719,8 +720,8 @@ class deviceService {
            onboarding: false,
            // tracking: true,
             coordinates:{
-                lat: 44.65996291256079,
-                lng: 10.969647276087807
+                lat: 44.51182078113969,
+                lng: 11.278424781706551
             },
         },
         {
@@ -733,8 +734,8 @@ class deviceService {
            onboarding: false,
            // tracking: true,
             coordinates:{
-                lat: 44.65996291256079,
-                lng: 10.969647276087807
+                lat: 44.51182078113969,
+                lng: 11.278424781706551
             },
         },
         {
@@ -747,8 +748,8 @@ class deviceService {
            onboarding: false,
            // tracking: true,
             coordinates:{
-                lat: 44.65996291256079,
-                lng: 10.969647276087807
+                lat: 44.51182078113969,
+                lng: 11.278424781706551
             },
         },
         {
@@ -761,8 +762,8 @@ class deviceService {
            onboarding: false,
            // tracking: true,
             coordinates:{
-                lat: 44.65996291256079,
-                lng: 10.969647276087807
+                lat: 44.51182078113969,
+                lng: 11.278424781706551
             },
         },
         {
@@ -775,8 +776,8 @@ class deviceService {
            onboarding: false,
            // tracking: true,
             coordinates:{
-                lat: 44.65996291256079,
-                lng: 10.969647276087807
+                lat: 44.51182078113969,
+                lng: 11.278424781706551
             },
         },
         {
@@ -789,8 +790,8 @@ class deviceService {
            onboarding: false,
            // tracking: true,
             coordinates:{
-                lat: 44.65996291256079,
-                lng: 10.969647276087807
+                lat: 44.51182078113969,
+                lng: 11.278424781706551
             },
         },
         {
@@ -803,8 +804,8 @@ class deviceService {
            onboarding: false,
            // tracking: true,
             coordinates:{
-                lat: 44.65996291256079,
-                lng: 10.969647276087807
+                lat: 44.51182078113969,
+                lng: 11.278424781706551
             },
         },
         {
@@ -817,8 +818,8 @@ class deviceService {
            onboarding: false,
            // tracking: true,
             coordinates:{
-                lat: 44.65996291256079,
-                lng: 10.969647276087807
+                lat: 44.51182078113969,
+                lng: 11.278424781706551
             },
         },
         {
@@ -831,8 +832,8 @@ class deviceService {
            onboarding: false,
            // tracking: true,
             coordinates:{
-                lat: 44.65996291256079,
-                lng: 10.969647276087807
+                lat: 44.51182078113969,
+                lng: 11.278424781706551
             },
         },
         {
@@ -845,8 +846,8 @@ class deviceService {
            onboarding: false,
            // tracking: true,
             coordinates:{
-                lat: 44.65996291256079,
-                lng: 10.969647276087807
+                lat: 44.51182078113969,
+                lng: 11.278424781706551
             },
         },
         {
@@ -859,8 +860,8 @@ class deviceService {
            onboarding: false,
            // tracking: true,
             coordinates:{
-                lat: 44.65996291256079,
-                lng: 10.969647276087807
+                lat: 44.51182078113969,
+                lng: 11.278424781706551
             },
         },
         {
@@ -873,8 +874,8 @@ class deviceService {
            onboarding: false,
            // tracking: true,
             coordinates:{
-                lat: 44.65996291256079,
-                lng: 10.969647276087807
+                lat: 44.51182078113969,
+                lng: 11.278424781706551
             },
         },
         {
@@ -887,8 +888,8 @@ class deviceService {
            onboarding: false,
            // tracking: true,
             coordinates:{
-                lat: 44.65996291256079,
-                lng: 10.969647276087807
+                lat: 44.51182078113969,
+                lng: 11.278424781706551
             },
         },
         {
@@ -901,8 +902,8 @@ class deviceService {
            onboarding: false,
            // tracking: true,
             coordinates:{
-                lat: 44.65996291256079,
-                lng: 10.969647276087807
+                lat: 44.51182078113969,
+                lng: 11.278424781706551
             },
         }
     ]
