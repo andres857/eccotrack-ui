@@ -19,7 +19,7 @@
     import DeviceList from '../components/devices/DeviceList.vue';
     import distance from '../components/map/distance.vue';
     import {TabulatorFull as Tabulator} from 'tabulator-tables';
-    import  LocationService  from '../services/LocationService'
+    import  LocationService  from '../services/LocationService';
 
     export default defineComponent({
         components:{

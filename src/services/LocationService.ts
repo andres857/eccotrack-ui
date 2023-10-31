@@ -92,12 +92,35 @@ class LocationService {
         }
         return differenceTime;
     }
-    // Determina si un device esta en un rango a la ubicacion definida
+    // Determina si un device esta en el rango para una ubicacion dada
     async deviceIsRange(id: string, locationUbication: any){
         const onboardingLocation = await this.getOnBoardingLocation(id);
         // function que compara ambas y retorna true o false
         const isRange = await DistanceService.calculateDistance(locationUbication, onboardingLocation, 500);
         return isRange;
+    }
+    // asigna los devices a las locations definidas, not seen y en transito
+    async deviceIsLocation(id: string, locationUbication: any){
+        const locations = this.onboardingLocations();
+        const devices = await this.reportDevices();
+        // definir el array respuesta donde se asignen los devices a las locations
+        let report = [];
+        locations.forEach(async ( location )=>{
+            devices.forEach( async ( device )=>{
+                const isRange = await DistanceService.calculateDistance(location.Coordinates, device.ubication, 2000);
+                console.log('--------------deviceILocation-----------');
+                console.log(isRange);
+                console.log('--------------deviceILocation-----------');
+                if (isRange){
+                    const match = {
+                        location: location.Name,
+                        device: device.id,
+                        status: device.state,
+                        
+                    }
+                }                
+            })
+        })
     }
     async infoDevices(){
         const devicesUpdated = await Promise.all( devicesList.map ( async device => {
@@ -124,19 +147,54 @@ class LocationService {
             const deviceinfo = await this.getDeviceInfo(device.id);
             const lastSeenDevice = await this.lastSeen(deviceinfo.lastCom);
             return {
-                ubication: device.ubication,
                 id: device.id,
                 name: device.name,
+                ubication: device.ubication,
                 state: deviceinfo.comState === 1 ? true : false,
                 lastSeen: lastSeenDevice,
-                concentracion:device.concentracion,
-                proximidad: device.proximidad,
-                qualitySignal: device.qualitySignal,
-                onboarding: device.onboarding,
-                tracking: device.onboarding === true ? true: false,
             };
         }));
         return devicesUpdated;
+    }
+    onboardingLocations(){
+        const locations = [
+            {
+                Name: 'notseen',
+                Coordinates: {
+                    lat: 43.369835228477356,
+                    lng: 13.586193334088431
+                }
+            },
+            {
+                Name: 'Makeitalia',
+                Coordinates: {
+                    lat: 44.65118620446493,
+                    lng: 10.960114434341872
+                }
+            },
+            {
+                Name: 'oltreSolutions',
+                Coordinates: {
+                    lat: 44.51422930141049,
+                    lng: 11.331751299886024
+                }
+            },
+            {
+                Name: 'puro',
+                Coordinates: {
+                    lat: 43.369835228477356,
+                    lng: 13.586193334088431
+                }
+            },
+            {
+                Name: 'intransit',
+                Coordinates: {
+                    lat: 43.369835228477356,
+                    lng: 13.586193334088431
+                }
+            }
+        ];
+        return locations;
     }
 }
 

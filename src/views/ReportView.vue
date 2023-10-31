@@ -31,16 +31,10 @@ export default defineComponent({
           rowGroups: false
         },
         columns: [
-          { title: "Sede", field: "ubication" },
-          { title: "ID", field: "id" },
-          { title: "Nombre ID", field: "name", width: 200 },
-          { title: "Estado", field: "state", formatter:"tickCross" },
+          { title: "Location", field: "ubication" },
+          { title: "Devices", field: "id" },
+          { title: "status", field: "state", formatter:"tickCross" },
           { title: "Last seen", field: "lastSeen" },
-          { title: "Concentracion", field: 'concentracion', formatter:"tickCross" },
-          { title: "Proximidad", field: 'proximidad', formatter:"tickCross" },
-          { title: "Señal", field: 'qualitySignal', formatter:"tickCross" },
-          { title: "Onboarding", field: 'onboarding', formatter:"tickCross" },
-          { title: "Tracking", field: 'tracking', formatter:"tickCross" }
         ],
       });
     });

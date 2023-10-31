@@ -146,7 +146,7 @@
 
             const circleLocation = ref({
                 center: { lat: 0, lng: 0 },
-                radius: 1000,
+                radius: 5000,
                 strokeOpacity: 0.8,
                 strokeWeight: 2,
                 fillColor: '#19E05B',
