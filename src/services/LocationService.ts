@@ -13,7 +13,10 @@ class LocationService {
             const devices = data.data.map( (item: any) =>{
                 return {
                     id: item.id,
-                    name: item.name
+                    name: item.name,
+                    state: item.comState,//revisar cual es
+                    lastSeen: item.lastSeen,
+                    lastUbication: item.lastComputedLocation
                 }
             })
             return devices;
@@ -34,10 +37,6 @@ class LocationService {
         try {
             const { data } = await axios.get(`${API_URL}/sigfox/mi/devices/${id}`);
             console.log('id device',id);
-            
-            console.log('****************------***********');            
-            console.log(data);
-            console.log('****************------***********');
             const info = {
                 id:data.id,
                 sequenceNumber:data.sequenceNumber,
@@ -49,9 +48,6 @@ class LocationService {
                 group:data.group,
                 qualitySignal: data.lqi
             }
-            console.log('---------');
-            console.log(info);
-            console.log('----------');
             return info;
         } catch (error) {
             throw error;
@@ -74,10 +70,11 @@ class LocationService {
             throw error;
         }
     }
-    async lastSeen(lastSeenDevice: number){
+    lastSeen(lastSeenDevice: number){
         let differenceTime;
         const now = new Date();
         let lastCom = new Date(lastSeenDevice);
+
         let differenceInMilliseconds = now.getTime() - lastCom.getTime();                
         let differenceInMinutes = differenceInMilliseconds / (1000 * 60);
 
@@ -100,27 +97,37 @@ class LocationService {
         return isRange;
     }
     // asigna los devices a las locations definidas, not seen y en transito
-    async deviceIsLocation(id: string, locationUbication: any){
+    async deviceIsLocation(){
+        let report: Array<{ 
+            location: any,
+            device: any,
+            status: any, 
+            lastSeen: any 
+        }> = [];
+
         const locations = this.onboardingLocations();
-        const devices = await this.reportDevices();
+        const devices = await this.getDevices();
+        // const devices = await this.reportDevices();
+
         // definir el array respuesta donde se asignen los devices a las locations
-        let report = [];
-        locations.forEach(async ( location )=>{
-            devices.forEach( async ( device )=>{
-                const isRange = await DistanceService.calculateDistance(location.Coordinates, device.ubication, 2000);
-                console.log('--------------deviceILocation-----------');
-                console.log(isRange);
-                console.log('--------------deviceILocation-----------');
+        const promises = devices.map(async ( device )=>{
+            const matches = await Promise.all ( locations.map( async ( location )=>{
+                const isRange = await DistanceService.calculateDistance(location.Coordinates, device.lastUbication, 500);
                 if (isRange){
-                    const match = {
+                    const lastSeen = this.lastSeen(device.lastSeen);
+                    return  {
                         location: location.Name,
                         device: device.id,
-                        status: device.state,
-                        
+                        status: device.state === 1 ? 'Conectado' : 'Desconectado',
+                        lastSeen: lastSeen
                     }
-                }                
-            })
+                }
+                return null;
+            }))
+            report.push(...matches.filter(match => match !== null));
         })
+        await Promise.all(promises);        
+        return report;
     }
     async infoDevices(){
         const devicesUpdated = await Promise.all( devicesList.map ( async device => {
@@ -143,7 +150,7 @@ class LocationService {
         return devicesUpdated;
     }
     async reportDevices(){
-        const devicesUpdated = await Promise.all( devicesListReport.map ( async device => {
+        const devicesUpdated = await Promise.all( devicesListReport.map ( async ( device ) => {
             const deviceinfo = await this.getDeviceInfo(device.id);
             const lastSeenDevice = await this.lastSeen(deviceinfo.lastCom);
             return {

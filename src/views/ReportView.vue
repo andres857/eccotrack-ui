@@ -18,9 +18,13 @@ export default defineComponent({
   setup() {
     onMounted( async () => {
       const devices = await LocationService.reportDevices();
+      const arrayrta = await LocationService.deviceIsLocation();
+      console.log('array  rta');
+      console.log(arrayrta);
+      console.log('array rta');
       
       new Tabulator('#example-table', {
-        data: devices,
+        data: arrayrta,
         layout: "fitColumns",
         movableRows: true,
         groupBy: "ubication",
@@ -31,9 +35,9 @@ export default defineComponent({
           rowGroups: false
         },
         columns: [
-          { title: "Location", field: "ubication" },
-          { title: "Devices", field: "id" },
-          { title: "status", field: "state", formatter:"tickCross" },
+          { title: "Location", field: "location" },
+          { title: "Devices", field: "device" },
+          { title: "status", field: "status", formatter:"tickCross" },
           { title: "Last seen", field: "lastSeen" },
         ],
       });
