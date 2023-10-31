@@ -19,9 +19,9 @@ class DistanceService {
       const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
       const distance = earthRadius * c * 1000;
       // Verificar si la distancia está dentro del radio especificado
-      console.log('distance');
-      console.log(distance);
-      console.log('distance');
+      // console.log('distance');
+      // console.log(distance);
+      // console.log('distance');
       
       return distance <= radio;
     }else{

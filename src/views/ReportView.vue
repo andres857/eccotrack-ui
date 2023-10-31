@@ -17,7 +17,6 @@ import { TabulatorFull as Tabulator } from 'tabulator-tables';
 export default defineComponent({
   setup() {
     onMounted( async () => {
-      const devices = await LocationService.reportDevices();
       const arrayrta = await LocationService.deviceIsLocation();
       console.log('array  rta');
       console.log(arrayrta);
@@ -27,7 +26,7 @@ export default defineComponent({
         data: arrayrta,
         layout: "fitColumns",
         movableRows: true,
-        groupBy: "ubication",
+        groupBy: "location",
         paginationSize: 15,
         downloadRowRange: "all",
         pagination: "local",
