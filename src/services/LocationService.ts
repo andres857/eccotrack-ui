@@ -9,13 +9,13 @@ class LocationService {
 
     async getDevices(): Promise<any> {
         try {
-            const { data } = await axios.get(`${API_URL}/sigfox/mi/devices`);
+            const { data } = await axios.get(`${API_URL}/sigfox/mi/devices`);            
             const devices = data.data.map( (item: any) =>{
                 return {
                     id: item.id,
                     name: item.name,
-                    state: item.comState,//revisar cual es
-                    lastSeen: item.lastSeen,
+                    state: item.comState === 1 ? true : false,
+                    lastSeen: this.lastSeen(item.lastCom),
                     lastUbication: item.lastComputedLocation
                 }
             })
@@ -70,7 +70,7 @@ class LocationService {
             throw error;
         }
     }
-    lastSeen(lastSeenDevice: number){
+    lastSeen(lastSeenDevice: number){        
         let differenceTime;
         const now = new Date();
         let lastCom = new Date(lastSeenDevice);
@@ -107,26 +107,62 @@ class LocationService {
 
         const locations = this.onboardingLocations();
         const devices = await this.getDevices();
-        // const devices = await this.reportDevices();
 
-        // definir el array respuesta donde se asignen los devices a las locations
-        const promises = devices.map(async ( device )=>{
-            const matches = await Promise.all ( locations.map( async ( location )=>{
+        // Retorna los devices desconectados
+        let devicesDisconnected = devices.map((device, index)=>{        
+            if (!device.state){
+                // Obtener la ultima ubicacion conocida asociada a una sede                
+                return {
+                    location: 'Disconneted', 
+                    device: device.id,
+                    status: false,
+                    lastSeen: device.lastSeen
+                }
+            }
+        })
+
+        // Retorna los devices asociados a una location.
+        const promises = devices.map(async ( device, indexDevices )=>{
+             const matches = await Promise.all ( locations.map( async ( location, indexLocations )=>{
                 const isRange = await DistanceService.calculateDistance(location.Coordinates, device.lastUbication, 500);
-                if (isRange){
-                    const lastSeen = this.lastSeen(device.lastSeen);
+                if (isRange === true && device.state){
                     return  {
                         location: location.Name,
                         device: device.id,
-                        status: device.state === 1 ? 'Conectado' : 'Desconectado',
-                        lastSeen: lastSeen
+                        status: device.state,
+                        lastSeen: device.lastSeen
                     }
+                }else{
+                    return null;
                 }
-                return null;
             }))
             report.push(...matches.filter(match => match !== null));
         })
-        await Promise.all(promises);        
+
+        // Retorna los devices activos pero que no estan en el rango de la sede.
+        const promises1 = devices.map(async ( device, indexDevices )=>{
+            let countLocations = 0; 
+            const matches = await Promise.all ( locations.map( async ( location, indexLocations )=>{
+                const isRange = await DistanceService.calculateDistance(location.Coordinates, device.lastUbication, 500);
+                if (isRange === false){
+                    countLocations = countLocations + 1;
+                }
+                if(countLocations >= 3){
+                    console.log(`El device con id ${device.id} no esta asociado con ninguna ubicacion`);
+                    return  {
+                        location: 'In transit',
+                        device: device.id,
+                        status: device.state,
+                        lastSeen: device.lastSeen
+                    }
+                }
+            }))
+            report.push(...matches.filter(match => match !== null));
+        })
+        
+        await Promise.all(promises);
+        await Promise.all(promises1);
+        report.push(...devicesDisconnected);
         return report;
     }
     async infoDevices(){
@@ -166,35 +202,21 @@ class LocationService {
     onboardingLocations(){
         const locations = [
             {
-                Name: 'notseen',
-                Coordinates: {
-                    lat: 43.369835228477356,
-                    lng: 13.586193334088431
-                }
-            },
-            {
-                Name: 'Makeitalia',
+                Name: 'MakeItalia',
                 Coordinates: {
                     lat: 44.65118620446493,
                     lng: 10.960114434341872
                 }
             },
             {
-                Name: 'oltreSolutions',
+                Name: 'Oltre Solutions',
                 Coordinates: {
                     lat: 44.51422930141049,
                     lng: 11.331751299886024
                 }
             },
             {
-                Name: 'puro',
-                Coordinates: {
-                    lat: 43.369835228477356,
-                    lng: 13.586193334088431
-                }
-            },
-            {
-                Name: 'intransit',
+                Name: 'Puro',
                 Coordinates: {
                     lat: 43.369835228477356,
                     lng: 13.586193334088431
