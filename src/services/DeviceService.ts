@@ -1,8 +1,75 @@
 import axios from 'axios';
 
-const API_URL = 'https://api-nettrotter.windowschannel.com/sigfox/mi';
+const HOST = 'https://api-nettrotter.windowschannel.com';
 
 class deviceService {
+    lastSeen(lastSeenDevice: number){        
+        let differenceTime;
+        const now = new Date();
+        let lastCom = new Date(lastSeenDevice);
+
+        let differenceInMilliseconds = now.getTime() - lastCom.getTime();                
+        let differenceInMinutes = differenceInMilliseconds / (1000 * 60);
+
+        if (differenceInMinutes > 1440) {
+            let differenceInDays = differenceInMilliseconds / (1000 * 60 * 60 * 24);
+            differenceTime = `${Math.round(differenceInDays)} days`;
+        } else if(differenceInMinutes < 60){
+            differenceTime = `${Math.round(differenceInMinutes)} minutes`;
+        }else {
+            let differenceInhours = differenceInMilliseconds / (1000 * 60 * 60);
+            differenceTime = `${Math.round(differenceInhours)} hours`;
+        }
+        return differenceTime;
+    }
+
+    async getAllDevices(): Promise<any> {
+        try {
+            const { data } = await axios.get(`${HOST}/sigfox/mi/devices`);            
+            const devices = data.data.map( (item: any) =>{
+                return {
+                    id: item.id,
+                    name: item.name,
+                    state: item.comState === 1 ? true : false,
+                    lastSeen: this.lastSeen(item.lastCom),
+                    lastUbication: item.lastComputedLocation
+                }
+            })
+            return devices;
+        } catch (error) {
+            throw error;
+        }
+    }
+
+    async getDevice(id: string): Promise<any> {
+        try {
+            const { data } = await axios.get(`${HOST}/sigfox/mi/devices/${id}`);
+            console.log('id device',id);
+            const info = {
+                id:data.id,
+                sequenceNumber:data.sequenceNumber,
+                lastCom:data.lastCom,//The last time (in milliseconds since the Unix Epoch) the device has communicated
+                state:data.state,//1 -> DEAD: The device is not complying with its keepalive, it is suspected to be faulty.0
+                comState:data.comState,//3 -> RED: Keepalive is enabled at device-type-level. Communication is allowed but keepalive is not met.1
+                lastComputedLocation:data.lastComputedLocation,
+                deviceType:data.deviceType,
+                group:data.group,
+                qualitySignal: data.lqi
+            }
+            return info;
+        } catch (error) {
+            throw error;
+        }
+    }
+    
+    async getOnBoarding(id:string, limit = 25): Promise<any> {
+        try {
+            const onboarding = await axios.get(`${HOST}/history-location/mi/onboarding/${id}?limit=${limit}`);          
+            return onboarding.data;
+        } catch (error) {
+            throw error;
+        }
+    }
 
     devicesList: any [] = [
         {
@@ -907,16 +974,6 @@ class deviceService {
             },
         }
     ]
-    
-    async getDevices(): Promise<any> {
-        try {
-            const { data } = await axios.get(`${API_URL}/devices`);
-            return data;
-        } catch (error: any) {
-            console.log(error.message);
-            throw error;
-        }
-    }
 }
 
 const devicesServiceInstance = new deviceService();

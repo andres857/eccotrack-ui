@@ -6,25 +6,25 @@
             <v-col cols="4" class="mt-6">
                 <v-select
                     v-model="selectedUbication"
-                    :hint="`${selectedUbication}`"
                     :items="uniqueUbication"
-                    label="Estacion"
+                    label="Location"
+                    :hint="selectedUbication ? selectedUbication : 'Select a Location'"
                     variant="outlined"
-                    @change="updateFilteredDevices(selectedUbication)"
                     persistent-hint
                     return-object
                     single-line
+                    @change="updateFilteredDevices(selectedUbication)"
                 ></v-select>    
             </v-col>
             <v-col cols="4">
                 <div>
-                    <label for="deviceDropdown">Dispositivos en la ubicación seleccionada:</label>
+                    <label for="deviceDropdown">Devices in selected location </label>
                     <select  class="custom-vuetify-select" id="deviceDropdown" v-model="selectedFilteredDevice">
                         <option v-for="device in filteredDevices" :key="device.id" :value="device.id">
                             {{ device.name }}
                         </option>
                     </select>
-                    <p>Dispositivo seleccionado: {{ selectedFilteredDeviceName }}</p>
+                    <p>Device selected: {{ selectedFilteredDeviceName }}</p>
                     <!-- <v-select
                         v-model="selectedFilteredDevice"
                         :items="filteredDevices"
@@ -32,6 +32,7 @@
                         label="Dispositivos en la ubicación seleccionada"
                         @change="handleDeviceSelection()"
                     ></v-select> -->
+                    {{ filteredDevices }}
                 </div>
             </v-col>
         </v-row>
@@ -107,33 +108,35 @@
 <script lang="ts">
     import { defineComponent, ref, computed, onMounted, watch } from "vue";
     import { GoogleMap, Marker, Circle, InfoWindow } from "vue3-google-map";
+    import DeviceService from '../services/DeviceService';
     import  LocationService  from '../services/LocationService';
 
     export default defineComponent({
         components: { GoogleMap, Marker, Circle, InfoWindow },
         setup(){
-            interface Device {
-                id: any;
-                name: any;
-                ubication: any;
-                coordinates: any;
-                qualitySignal: any;
-                state: string;
-                lastSeen: string;
-                onboardingLocation: boolean;
-                onboardingCoordinates: any;
-            }
-            const devices = ref<Device[]>([]);
+            // interface Device {
+            //     id: any;
+            //     name: any;
+            //     ubication: any;
+            //     coordinates: any;
+            //     qualitySignal: any;
+            //     state: string;
+            //     lastSeen: string;
+            //     onboardingLocation: boolean;
+            //     onboardingCoordinates: any;
+            // }
+            // const devices = ref<Device[]>([]);
+            const devices = ref([]);
             const selectedDevice = ref([]);
             const deviceSelect = ref([]);
 
             // filter ubications
             const selectedUbication = ref(null);
+
             // filter devices
             const filteredDevices = ref([]);
             const selectedFilteredDevice = ref(null);
 
-            
             // locations
             const OnboardingLocation = ref ('');
             const numberOfLocations = ref(25); // Valor predeterminado
@@ -154,19 +157,25 @@
                 fillOpacity: 0.2
             });
 
+            // get list of devices
             const listDevices = onMounted( async () => {
                 console.log('Onmounted list devices');
-                const infoDevices = await LocationService.infoDevices();
+                const infoDevices = await DeviceService.getAllDevices();
                 devices.value = infoDevices;
                 console.log(devices.value);
             });
 
-            // filter dropdown ubications, get list ubications
+            // filter dropdown locations, get list locations
             const uniqueUbication = computed(()=>{
-                const uniqueUbicationsSet = new Set(devices.value.map(device => device.ubication));
-                const uniqueUbications = [
-                    ...uniqueUbicationsSet
-                ]
+                const locations = LocationService.onboardingLocations();
+                const uniqueUbications = locations.map( location => location.Name);
+
+                // const uniqueUbicationsSet = new Set(devices.value.map(device => device.ubication));
+                // const uniqueUbications = [
+                //     ...uniqueUbicationsSet
+                // ]
+                console.log('uniqueUbications');
+                console.log(uniqueUbications);
                 return uniqueUbications;
             })
 
@@ -176,9 +185,13 @@
                 });
             };
 
-            // filter para los devices
+            // filter dropdown for devices
             const updateFilteredDevices = ( selectedUbication:any ) => {
-                filteredDevices.value = devices.value.filter((device: any) => device.ubication === selectedUbication);
+                console.log('funcion para listar los devices de una ubicacion');
+                console.log(devices.value);
+                filteredDevices.value = devices.value.filter((device: any) => 
+                    device.ubication === selectedUbication
+                );
             };
 
             watch( selectedUbication, (newUbication) => {

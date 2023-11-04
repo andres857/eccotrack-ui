@@ -3,7 +3,7 @@ class DistanceService {
       return degrees * (Math.PI / 180);
   }
 
-  calculateDistance(objet1: { lat: number; lng: number }, objet2: { lat: number; lng: number }, radio: number): boolean {
+  calculateDistance(id:string , objet1: { lat: number; lng: number }, objet2: { lat: number; lng: number }, radio: number): boolean {
     if (objet1 && objet2) {
       const earthRadius = 6371; // Radio de la Tierra en kilómetros
       // Convertir las coordenadas de grados a radianes
@@ -19,10 +19,14 @@ class DistanceService {
       const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
       const distance = earthRadius * c * 1000;
       // Verificar si la distancia está dentro del radio especificado
-      // console.log('distance');
-      // console.log(distance);
-      // console.log('distance');
-      
+      // if( distance <= radio ){
+      //    return true;
+      // }else{
+      //   // if(id === "C218D0"){
+      //   //   console.log(`la distancia es ${distance} del device con id ${id} con la Coordinate: `, objet2, `y la ubicacion con coordenada`, objet1 );
+      //   // }
+      //    return false;
+      // }
       return distance <= radio;
     }else{
       return false;
