@@ -8,7 +8,7 @@ const router = createRouter({
       path: '/',
       name: 'home',
       // component: HomeView
-      component: () => import('../views/HomeView.vue')
+      component: () => import('../views/ReportView.vue')
     },
     {
       path: '/onboarding',

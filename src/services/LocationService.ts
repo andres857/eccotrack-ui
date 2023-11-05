@@ -47,18 +47,18 @@ class LocationService {
         const devices = await DeviceService.getAllDevices();
 
         // Retorna los devices desconectados
-        let devicesDisconnected = devices.map((device: any)=>{        
-            if (!device.state){
-                // Obtener la ultima ubicacion conocida asociada a una sede                
-                return {
-                    location: 'Disconneted', 
-                    device: device.id,
-                    status: false,
-                    lastSeen: device.lastSeen
-                }
-            }
-        })
-
+        let devicesDisconnected = devices
+        .map((device: any) => {
+          if (!device.state) {
+            return {
+              location: 'Not Seen',
+              device: device.id,
+              status: false,
+              lastSeen: device.lastSeen
+            };
+          }
+        }).filter((device: any) => device !== undefined);
+      
         // Retorna los devices asociados a una location.
         const promises = devices.map(async ( device:any )=>{
             let countLocations = 0;             
@@ -89,32 +89,9 @@ class LocationService {
             }))
             report.push(...matches.filter(match => match !== null));
         })
-
-        // Retorna los devices activos pero que no estan en el rango de la sede.
-        // const promises1 = devices.map(async ( device: any )=>{
-        //     let countLocations = 0;
-        //     const matches = await Promise.all ( locations.map( async ( location )=>{
-        //         const isRange = await DistanceService.calculateDistance(device.id, location.Coordinates, device.lastUbication, 10);
-        //         if (isRange === false){
-        //             countLocations = countLocations + 1;
-        //         }
-        //         // console.log('device: ', device.id ,'location: ', location.Name, 'count', countLocations);
-        //         if(countLocations >= 3){                    
-        //             console.log(`El device con id ${device.id} no esta asociado con ninguna ubicacion`);
-        //             // countLocations = 0;
-        //             return  {
-        //                 location: 'In transit',
-        //                 device: device.id,
-        //                 status: device.state,
-        //                 lastSeen: device.lastSeen
-        //             }
-        //         }
-        //     }))
-        //     report.push(...matches.filter(match => match !== null));
-        // })
         
         await Promise.all(promises);
-        // await Promise.all(promises1);
+        // Agregar las ubicaciones restantes si no tienen devices para la vista
         report.push(...devicesDisconnected);
         return report;
     }
@@ -173,7 +150,7 @@ class LocationService {
                 }
             },
             {
-                Name: 'Puro',
+                Name: 'PU.RO',
                 Coordinates: {
                     lat: 43.369835228477356,
                     lng: 13.586193334088431
