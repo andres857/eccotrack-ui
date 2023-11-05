@@ -63,7 +63,7 @@ class LocationService {
         const promises = devices.map(async ( device:any )=>{
             let countLocations = 0;             
              const matches = await Promise.all ( locations.map( async ( location )=>{
-                const isRange = await DistanceService.calculateDistance(device.id, location.Coordinates, device.lastUbication, 15000);
+                const isRange = await DistanceService.calculateDistance(device.id, location.Coordinates, device.lastUbication, 7000);
                 if (isRange === true && device.state){
                     return  {
                         location: location.Name,
