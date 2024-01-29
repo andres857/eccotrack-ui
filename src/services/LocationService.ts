@@ -4,6 +4,7 @@ import DeviceService from './DeviceService';
 
 // recupera la info de SIGFOX
 const API_URL = 'https://api-nettrotter.windowschannel.com';
+const API_URL_DO = 'https://api.pinegrove.io';
 
 class LocationService {
 
@@ -63,7 +64,7 @@ class LocationService {
         const promises = devices.map(async ( device:any )=>{
             let countLocations = 0;             
              const matches = await Promise.all ( locations.map( async ( location )=>{
-                const isRange = await DistanceService.calculateDistance(device.id, location.Coordinates, device.lastUbication, 18000);
+                const isRange = await DistanceService.calculateDistance(location.Coordinates, device.lastUbication, 18000);
                 if (isRange === true && device.state){
                     return  {
                         location: location.Name,
@@ -71,7 +72,17 @@ class LocationService {
                         status: device.state,
                         lastSeen: device.lastSeen
                     }
-                }else if(isRange === false){
+                }
+                else if(isRange === false){
+                    if(!device.microBasestation || device.microBasestation === null || device.microBasestation === "undefined" ){
+                        console.log(`El device con id ${device.id} esta en PURO`);
+                        return  {
+                            location: 'PU.RO',
+                            device: device.id,
+                            status: device.state,
+                            lastSeen: device.lastSeen
+                        }
+                    }
                     countLocations ++;
                     if (countLocations >= 3) {
                         console.log(`El device con id ${device.id} no esta asociado con ninguna ubicacion`);

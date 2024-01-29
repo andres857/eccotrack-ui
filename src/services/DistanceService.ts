@@ -3,7 +3,7 @@ class DistanceService {
       return degrees * (Math.PI / 180);
   }
 
-  calculateDistance(id:string , objet1: { lat: number; lng: number }, objet2: { lat: number; lng: number }, radio: number): boolean {
+  calculateDistance(objet1: { lat: number; lng: number }, objet2: { lat: number; lng: number }, radio: number): boolean {
     if (objet1 && objet2) {
       const earthRadius = 6371; // Radio de la Tierra en kilómetros
       // Convertir las coordenadas de grados a radianes

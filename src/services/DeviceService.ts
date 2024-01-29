@@ -27,12 +27,14 @@ class deviceService {
         try {
             const { data } = await axios.get(`${HOST}/sigfox/mi/devices`);            
             const devices = data.data.map( (item: any) =>{
+
                 return {
                     id: item.id,
                     name: item.name,
                     state: item.comState === 1 ? true : false,
                     lastSeen: this.lastSeen(item.lastCom),
-                    lastUbication: item.lastComputedLocation
+                    lastUbication: item.lastComputedLocation,
+                    microBasestation: item.hasOwnProperty('lastComputedLocation')
                 }
             })
             return devices;
