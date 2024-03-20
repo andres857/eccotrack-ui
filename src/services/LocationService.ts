@@ -3,7 +3,7 @@ import DistanceService from './DistanceService';
 import { devicesList, devicesListReport } from './DeviceService';
 
 // recupera la info de SIGFOX
-const API_URL = 'https://api-nettrotter.windowschannel.com';
+const API_URL = 'http://34.32.8.41:3000';
 
 class LocationService {
 

@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_URL = 'https://api-nettrotter.windowschannel.com/sigfox';
+const API_URL = 'http://34.32.8.41:3000/sigfox';
 
 class deviceService {
 

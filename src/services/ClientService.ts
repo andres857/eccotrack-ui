@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_URL = 'https://api-nettrotter.windowschannel.com';
+const API_URL = 'http://34.32.8.41:3000';
 
 class ClientService {
     async crearCliente(client: any): Promise<any> {
