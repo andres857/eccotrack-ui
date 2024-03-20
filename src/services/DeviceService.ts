@@ -6,6 +6,24 @@ class deviceService {
 
     devicesList: any [] = [
         {
+            "id": "C1C439",
+            "name": "New Device 1",
+            'ubication': 'Malaga',
+            coordinates:{
+                lat: 36.7111006427816,
+                lng: -4.433438829
+            },
+        },
+        {
+            "id": "C2AC35",
+            "name": "New Device 2",
+            'ubication': 'Malaga',
+            coordinates:{
+                lat: 36.7111006427816,
+                lng: -4.433438829
+            },
+        },
+        {
             "id": "C0E915",
             "name": "Grupo Electrogeno 1",
             'ubication': 'Chamartin',
@@ -224,6 +242,34 @@ class deviceService {
     ]
 
     devicesListReport: any [] = [
+        {
+            "id": "C2AC35",
+            "name": "New Device 2",
+            'ubication': 'Malaga',
+            concentracion: null,
+            proximidad: null,
+            qualitySignal: false,
+            onboarding: false,
+            // tracking: true,
+            coordinates:{
+                lat: 36.7111006427816,
+                lng: -4.433438829
+            },
+        },
+        {
+            "id": "C1C439",
+            "name": "New Device 1",
+            'ubication': 'Malaga',
+            concentracion: null,
+            proximidad: null,
+            qualitySignal: false,
+            onboarding: false,
+            // tracking: true,
+            coordinates:{
+                lat: 36.7111006427816,
+                lng: -4.433438829
+            },
+        },
         {
             "id": "C0E915",
             "name": "Grupo Electrogeno 1",
